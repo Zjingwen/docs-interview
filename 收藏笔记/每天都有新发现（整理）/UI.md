@@ -1,3 +1,4 @@
+# UI
 - [为什么页面跟设计稿差距这么大？是啊！为毛啊？](http://www.uisdc.com/design-just-stay-design)
 - [uimaker - 后台管理模板](http://www.uimaker.com/uimakerdown/bstemplate/)
 - [字数多的海报如何设计才能抢眼](http://www.zhihu.com/question/36121669)
@@ -8,7 +9,7 @@
 - [绘画，观察和艺术](http://www.douban.com/doulist/1503061/)
 - [想做设计师？](http://www.douban.com/doulist/1156868/)
 - [设计灵感 | 50 份用户个人主页设计](https://zhuanlan.zhihu.com/p/24900484)
-- [[译文] 去形式化——移动设计新趋势](https://zhuanlan.zhihu.com/p/24771482)
+- ["译文"去形式化——移动设计新趋势](https://zhuanlan.zhihu.com/p/24771482)
 - [设计导航](http://hao.shejidaren.com/)
 - [用PS和AI画炫酷拟物手表（附源文件）](http://www.ui.cn/detail/235900.html)
 - [8分钟看完，设计大咖在UCAN大会分享的尖端干货(原创文章)](http://www.zcool.com.cn/article/ZNDkxNDgw.html)
@@ -54,7 +55,7 @@
 - [设计师该如何做好设计决策](https://zhuanlan.zhihu.com/p/23158317)
 - [一些关于界面设计的技巧](http://www.cnblogs.com/MuYunyun/p/6037262.html)
 - [2016 Medium值得阅读的设计文章](https://zhuanlan.zhihu.com/p/24452929)
-- [[译] 如何用 Sketch 打造「前端框架」](https://zhuanlan.zhihu.com/p/24465933)
+- ["译"如何用 Sketch 打造「前端框架」](https://zhuanlan.zhihu.com/p/24465933)
 - [2016 年的艺术界有何值得留意之处？](https://www.zhihu.com/question/54017434)
 - [最有影响力的设计博客有哪些？](https://www.zhihu.com/question/19653726)
 
