@@ -2,7 +2,7 @@
 
 ![](https://pic4.zhimg.com/v2-a9782064bf87df8752875f947d4ccb9f_b.jpg)
 
-> 本文归档于 [易浮的小窝](https:https://hyifu.github.io/2016/07/16/%25E6%2588%2591%25E5%258F%2591%25E7%258E%25B0%25E4%25BA%2586Chrome%25E7%259A%2584%25E4%25B8%2580%25E4%25B8%25AABug/)
+> 本文归档于 [易浮的小窝](http:https://hyifu.github.io/2016/07/16/%25E6%2588%2591%25E5%258F%2591%25E7%258E%25B0%25E4%25BA%2586Chrome%25E7%259A%2584%25E4%25B8%2580%25E4%25B8%25AABug/)
 
 Chrome 浏览器作为目前最受欢迎的浏览器之一，实在是又快又安全（又耗电又费内存），然而我在开发我们的店铺系统的时候，无意间发现有一个小 bug（其他浏览器均不会出现这种情况）
 
@@ -10,7 +10,7 @@ Chrome 浏览器作为目前最受欢迎的浏览器之一，实在是又快又�
 
 这段时间在开发我们的店铺系统，这中间一定会有的内容是登录注册之类模块。在这之前，由于 UI 的要求，我们需要在 PC 端自己实现一个完整的输入框组件，这个组件具备一个特别的动画效果：自己实现来一个缩小移动的 **_placeholder_** 提示。
 
-你可以查看 友好速搭的官方示例店铺 [藤煤竹](https:http://moren.v.youhaosuda.com/)，我们希望的的效果如下：  
+你可以查看 友好速搭的官方示例店铺 [藤煤竹](http:http://moren.v.youhaosuda.com/)，我们希望的的效果如下：  
 
 ![](https://pic3.zhimg.com/v2-e84bfac6917a9a0b497c4e65637ba0a4_b.jpg)  
 
@@ -100,7 +100,7 @@ Chrome 并不会在一进来就填充表单，甚至可以说是填充表单是�
 
 总算项目中实现了设计师的要求，但这究竟是 Chrome 的一个 bug，还是我的实现有问题呢？抱着这个问题，我们先搜索一下网络，经过艰难的检索（事实上貌似很少有人会遇到这个奇怪的需求），我居然直接就在 _**chromium**_ 的 bug 反馈专区找到了这个 issue：  
 
-[Issue 378419](https:https://bugs.chromium.org/p/chromium/issues/detail?id=378419)  
+[Issue 378419](http:https://bugs.chromium.org/p/chromium/issues/detail?id=378419)  
 
 嗯，是14年中的问题，基本没人关注，甚至刚报上去的时候，版主还认为是原生的 _**placeholder**_ 中的 bug（笑）  
 

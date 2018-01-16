@@ -23,7 +23,7 @@
 *   TrifleJS, 基于 Trident
 *   Splash, 基于 Webkit
 
-本文主要介绍 Google 提供的无头浏览器(headless Chrome), 他基于 [Chrome DevTools protocol](http:https://chromedevtools.github.io/devtools-protocol/) 提供了不少高度封装的接口方便我们控制浏览器。
+本文主要介绍 Google 提供的无头浏览器(headless Chrome), 他基于 [Chrome DevTools protocol](https:https://chromedevtools.github.io/devtools-protocol/) 提供了不少高度封装的接口方便我们控制浏览器。
 
 ## 简单的代码示例
 
@@ -63,7 +63,7 @@
 
 </div>
 
-[完整示例代码](http:https://github.com/laispace/puppeteer-explore/blob/master/demo/save-screenshot.js)
+[完整示例代码](https:https://github.com/laispace/puppeteer-explore/blob/master/demo/save-screenshot.js)
 
 ## 保存网页为 pdf
 
@@ -75,7 +75,7 @@
 
 </div>
 
-[完整示例代码](http:https://github.com/laispace/puppeteer-explore/blob/master/demo/save-pdf.js)
+[完整示例代码](https:https://github.com/laispace/puppeteer-explore/blob/master/demo/save-pdf.js)
 
 ## 执行脚本
 
@@ -89,7 +89,7 @@
 
 Page.$ 可以理解为我们常用的 document.querySelector, 而 Page.$$ 则对应 document.querySelectorAll。
 
-[完整示例代码](http:https://github.com/laispace/puppeteer-explore/blob/master/demo/evalute-script.js)
+[完整示例代码](https:https://github.com/laispace/puppeteer-explore/blob/master/demo/evalute-script.js)
 
 ## 自动提交表单
 
@@ -103,7 +103,7 @@ Page.$ 可以理解为我们常用的 document.querySelector, 而 Page.$$ 则对
 
 ![](https://pic4.zhimg.com/v2-ab006499a8cb6f759aada4da5e358f1f_b.jpg)
 
-[完整示例代码](http:https://github.com/laispace/puppeteer-explore/blob/master/demo/auto-submit-form.js)
+[完整示例代码](https:https://github.com/laispace/puppeteer-explore/blob/master/demo/auto-submit-form.js)
 
 ## 复杂点的代码示例
 
@@ -178,11 +178,11 @@ Page.$ 可以理解为我们常用的 document.querySelector, 而 Page.$$ 则对
 
 page.evaluate 意为在浏览器环境执行脚本，可传入第二个参数作为句柄，而 page.$eval 则针对选中的一个 DOM 元素执行操作。
 
-[完整示例代码](http:https://github.com/laispace/puppeteer-explore/blob/master/demo/craw-spa.js)
+[完整示例代码](https:https://github.com/laispace/puppeteer-explore/blob/master/demo/craw-spa.js)
 
 ## 导出批量网页：下载图灵图书
 
-我在 [图灵社区](http:http://www.ituring.com.cn/) 上买了不少电子书，以前支持推送到 mobi 格式到 kindle 或推送 pdf 格式到邮箱进行阅读，不过经常会关闭这些推送渠道，只能留在网页上看书。
+我在 [图灵社区](https:http://www.ituring.com.cn/) 上买了不少电子书，以前支持推送到 mobi 格式到 kindle 或推送 pdf 格式到邮箱进行阅读，不过经常会关闭这些推送渠道，只能留在网页上看书。
 
 对我来说不是很方便，而这些书籍的在线阅读效果是服务器渲染出来的(带了大量标签，无法简单抽取出好的排版)，最好的方式当然是直接在线阅读并保存为 pdf 或图片了。
 
@@ -214,9 +214,9 @@ page.evaluate 意为在浏览器环境执行脚本，可传入第二个参数作
 
 我的书架里有20多本书，下载完后是这样子：
 
-![](http://pic3.zhimg.com/v2-633a4b56e5cfeb1c107a6dac064b92c6_b.jpg)
+![](https://pic1.zhimg.com/v2-633a4b56e5cfeb1c107a6dac064b92c6_b.jpg)
 
-[完整示例代码](http:https://github.com/laispace/puppeteer-explore/blob/master/demo/download-ituring-books.js)
+[完整示例代码](https:https://github.com/laispace/puppeteer-explore/blob/master/demo/download-ituring-books.js)
 
 ## 无头浏览器还能做什么？
 
@@ -234,6 +234,6 @@ page.evaluate 意为在浏览器环境执行脚本，可传入第二个参数作
     如传统 HTTP 爬虫爬不到的地方，就可配合无头浏览器渲染能力来做
 *   etc
 
-感兴趣的同学可以关注专栏或者发送简历至qingsheng.lqs####[<span>http://</span><span>alibaba-inc.com</span><span></span>](http:http://alibaba-inc.com)，欢迎有志之士加入~
+感兴趣的同学可以关注专栏或者发送简历至qingsheng.lqs####[<span>http://</span><span>alibaba-inc.com</span><span></span>](https:http://alibaba-inc.com)，欢迎有志之士加入~
 
-> 原文地址：[<span>https://</span><span>juejin.im/post/59e5a86c</span><span>51882578bf185dba</span><span></span>](http:https://juejin.im/post/59e5a86c51882578bf185dba)
+> 原文地址：[<span>https://</span><span>juejin.im/post/59e5a86c</span><span>51882578bf185dba</span><span></span>](https:https://juejin.im/post/59e5a86c51882578bf185dba)
