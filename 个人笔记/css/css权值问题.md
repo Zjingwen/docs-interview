@@ -8,7 +8,6 @@ span继承了，来自codeClass的color。也就是说，子元素会从父元�
 <p class="codeClass"><span>你好</span>世界</p>
 ```
 
-
 ## CSS选择器的权重的表现
 根据id（id选择器）>class（类选择器）>body（元素选择器）。Id选择器的权重为100，Class选择器的权重为10，Body选择器的权重为1
 
@@ -23,7 +22,6 @@ p{color:#000;}
 
 1. 最终显示的效果，你好世界的color为color：#ffffff，因为ID的权重是最高的，.codeClass和p都会被codeId屏蔽掉。
 2. #codeid（权重100）>.codeClass（权重10）>p（权重1）
-　　
 
 ## 相同权重时的表现
 因为CSS会当权重相同时，CSS会遵循就近原则，如果使用`!important`，就会强制使用当前属性。
@@ -35,7 +33,6 @@ p{color;#fff;}
 ```
 
 1. 最终的显示效果，你好世界的color为color;#fff，，选择最新书写的css为最终显示效果。
-
 
 ## 权重的相加
 CSS的权值是可以叠加计算的，从而导致影响最后的效果
