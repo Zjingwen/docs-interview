@@ -1,4 +1,3 @@
-[TOC]
 # Event Loop
 
 ## javascript是单线程
@@ -8,24 +7,34 @@ javascript这门语言从诞生起就是单线程的，这是针对使用场景�
 
 但是单线程，就意味着所有任务，都在一个线程上执行，如果上一个任务占用浏览器太长时间，则一下个任务就会停滞，给用户卡顿的体验。而且有时候一个任务有很长的空转期，这个时候最大的可能是ajax返回。这时javascript将任务划分为两种，一类是优先执行的同步任务、一类是等待有结果之后再进入主程的异步任务。这样可以高效的使用CPU，大大缩短空转期CPU的占用，提高用户体验。
 
+## 调用栈
+用来执行代码中的所有同步任务，其中的main()指当前文件。
+
+调用栈的最大长度16000个任务，如果超出则会提示报错。
+
 ## 任务队列
-同步任务
+用来执行异步任务，等异步任务有结果后，将异步任务推入callblock queue中。调用了xhr、dom、setTimeout，等web Api接口的任务，都属于异步任务。
 
-异步任务，只要指定过回调函数，当这个事件发生时就会进入任务队列，等待主线程读取。
-
-## 回调函数callblock
-回调函数，是被主线程挂起的代码，当主线程开始执行异步函数时，就会去执行回调函数。
-
-
-## 事件
-所有事件都是向，任务队列添加一个消息
+## callblock queue
+event queue队列中，一旦有完成的任务，就将这个任务推入callblock queue队列中，等待调用栈调用。
 
 ## Event Loop事件循环机制
+当调用栈（主程）为空时，去读取callblock queue队列时候有，异步操作完成的任务，如果有就将任务推送到主程执行。这个机制是会一直循环坚挺的。
+
+当event loop将callblock queue中的人物丢入调用栈时，浏览器的重绘机制会梗阻。因为callblock queue比rendar queue的优先级高。所以调用栈会优先调用callblock queue中的任务。
 
 ## setTimeout
-在一段时间之后，向任务队列添加一个消息
+在一段时间之后，向callblock queue队列添加一个任务。
+
+setTimeout的时间设置，并不是指这个方法的执行时间，而是指这个方法，被放在任务队列中何时插入callblock queue队列的时间。
+
+影响setTimeout的执行时间，有两个设置的时间，当前处于callblock queue队列的什么位置，如果处于队列头部，那么会被最快执行，反之就要看前面的队列任务需要的执行时间。
+
+setTimeout最快进入callblock的时间为4毫秒（html标准）
 
 ## 永不阻塞
+正是因为javascript的event loop，当调用栈将所有同步任务完成后，通过event loop机制将callblock queue的任务放入调用栈。这样调用栈中的所有同步任务都不会被延迟，而且异步等待又web浏览器去做处理，当有callblock完成时，将任务推入中callblock queue中，等待event loop调取。高效的使用了空闲时间。
+
 
 ## Web Worker标准
 允许javascript创建多线程，但是子线程完全受主线程控制，并且不能操作DOM
