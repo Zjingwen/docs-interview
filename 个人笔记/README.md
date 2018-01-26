@@ -8,5 +8,5 @@
 * [call、apply、bind.md](javascript/call、apply、bind.md)
 * [prototype和__proto__.md](javascript/prototype和__proto__.md)
 * [Array新增加的方法.md](javascript/Array新增加的方法.md)
-* [event loop.md](javascript/event loop.md)
+* [EventLoop.md](javascript/EventLoop.md)
 
