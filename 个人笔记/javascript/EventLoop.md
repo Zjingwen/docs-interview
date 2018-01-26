@@ -56,7 +56,9 @@ console.log(3);
 
 
 ## 任务队列
-用来执行异步任务，等异步任务有结果后，将异步任务推入callblock queue中。调用了xhr、dom、setTimeout，等web Api接口的任务，都属于异步任务。
+用来执行web Api任务的队列，等任务有结果后，将异步任务推入callblock queue中。调用了xhr、dom、setTimeout，等web Api接口的任务，都属于异步任务。
+
+![](http://o7s01mlar.bkt.clouddn.com/EventLoop3.jpg)
 
 ## callblock queue
 event queue队列中，一旦有完成的任务，就将这个任务推入callblock queue队列中，等待调用栈调用。
