@@ -1,4 +1,4 @@
-# Array新增加的方法
+# Array方法
 
 ## forEach()
 遍历array，不返回

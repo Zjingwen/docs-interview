@@ -10,4 +10,5 @@
 * [Array新增加的方法.md](javascript/Array新增加的方法.md)
 * [EventLoop.md](javascript/EventLoop.md)
 * [vue的生命周期.md](javascript/vue的生命周期.md)
+* [vue的nextTick.md](javascript/vue的nextTick.md)
 
