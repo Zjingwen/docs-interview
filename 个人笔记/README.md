@@ -12,3 +12,6 @@
 * [vue的生命周期.md](javascript/vue的生命周期.md)
 * [vue的nextTick.md](javascript/vue的nextTick.md)
 
+## 问题
+* [对组件的理解](question/components.md)
+
