@@ -1,12 +1,12 @@
 # 对组件的理解
 
-## 组件的构成
+## Q：组件的构成
 
 * 完整web端组件由高度解耦的html、css、js构成
 * 组件的包涵4个生命周期：初始化、渲染、事件绑定、销毁
 * 合理的接口设计
 
-## Vue组件
+## Q：Vue组件
 
 一个简单的vue组件必须包含：
 
@@ -83,8 +83,14 @@ function destroy(){
 }
 ```
 
-## Web Components
+## Q：Web Components
 
+web components包含：
+
+* Shadow DOM
+* 自定义元素
+* HTML 模板`<template></template>`
+* HTML 导入
 
 
 
