@@ -7,7 +7,10 @@
 ## Q：实例对象的特性
 
 拥有__proto__
-通过，Array、Object、String、Number、Symbol、自定义构造函数，new出来的实例。
+
+通过Array、Object、String、Number、Symbol、自定义构造函数，new关键字赋值的变量
+
+通过`Object.create()`赋值的变量
 
 ## Q：创建实例
 
@@ -19,19 +22,19 @@
 
 系统会自动创建prototype对象，__proto__对象
 
-## prototype显示原型
+## Q：prototype显示原型
 
-构造函数内由系统创建的对象
+系统为构造函数创建的对象
 
-拥有__proto__和constructor
+拥有`__proto__ || [[prototype]]` 和`constructor`
 
-prototype.__proto__指向构造函数prototype的原型的prototype对象
+`prototype.__proto__`指向构造函数的`prototype`
 
-prototype.constructor指向构造函数本身
+`prototype.constructor`指向构造函数本身
 
-## __proto__隐式原型
+## `__proto__ || [[prototype]]`隐式原型
 
-构造函数内由系统创建的对象
+系统为构造函数创建的对象
 
-__proto__指向创建这个对象的构造函数的prototype显式原型
+`__proto__`指向构造函数的`prototype`
 
