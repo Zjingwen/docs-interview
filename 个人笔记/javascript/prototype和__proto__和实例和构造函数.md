@@ -14,9 +14,82 @@
 
 ## Q：创建实例
 
-<!--通过new关键字创造的实例，会继承当前构造函数this下面的对象和方法
+工厂模式
 
-每一个实例都拥有一个__proto__对象，指向构造函数的原型对象的prototype-->
+```
+function Person(name,age,job){
+    var o = new Object();
+    o.name = name;
+    o.age = name;
+    o.job = name;
+    o.sayName = function(){
+        console.log(this.name);
+    };
+
+    return o;
+};
+
+var person1 = Person('zhou',19,'javascript');
+person1.sayName();
+```
+
+构造函数模式
+
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        console.log(this.name);
+    }
+}
+
+Person('zhou', 19, 'javascript');
+global.sayName();
+```
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        console.log(this.name);
+    }
+}
+
+var person1 = new Person('zhou', 19, 'javascript');
+person1.sayName();
+```
+
+```
+function Person(name, age, job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        console.log(this.name);
+    }
+}
+
+var o = new Object();
+Person.call(o,'zhou', 19, 'javascript'); 
+o.sayName();
+```
+
+```
+function Person(){};
+
+Person.prototype.name = 'zhou';
+Person.prototype.age = 19;
+Person.prototype.job = 'javascript';
+Person.prototype.sayName = function(){
+    console.log(this.name);
+};
+
+var person1 = new Person('zhou',19,'javascript');
+person1.sayName();
+```
 
 ## Q：构造函数的特点
 
