@@ -80,14 +80,83 @@ o.sayName();
 ```
 function Person(){};
 
-Person.prototype.name = 'zhou';
-Person.prototype.age = 19;
-Person.prototype.job = 'javascript';
-Person.prototype.sayName = function(){
-    console.log(this.name);
+Person.prototype = {
+    name : 'zhou',
+    age : 19,
+    job : 'javascript',
+    sayName : function(){
+        console.log(this.name);
+    },
 };
 
+Object.defineProperty(Person.prototype,"constructor",{
+    enumerable: false,
+    value: Person
+})
+
 var person1 = new Person('zhou',19,'javascript');
+person1.sayName();
+```
+
+组合使用构造函数模式和原型模式
+
+```
+function Person(){
+    this.name = 'zhou';
+    this.age = 19;
+    this.job = 'javascript';
+};
+
+Person.prototype = {
+    sayName : function(){
+        console.log(this.name);
+    },
+};
+
+Object.defineProperty(Person.prototype,"constructor",{
+    enumerable: false,
+    value: Person
+})
+
+var person1 = new Person('zhou',19,'javascript');
+person1.sayName();
+```
+
+寄生构造函数模式
+
+```
+function sqliArr(){
+    var Value = new Array();
+    
+    Value.push.apply(Value, arguments);
+
+    Value.toPipedString = function(){
+        return this.join('|');
+    }
+
+    return Value;
+}
+
+var color = new sqliArr('red','blue','green');
+
+console.log(color.toPipedString());
+
+```
+
+稳妥构造函数模式
+
+```
+function Person(name, age ,job){
+    var o = new Object();
+    
+    o.sayName = function(){
+        console.log(name);
+    };
+
+    return o;
+}
+
+var person1 = new Person('zhou', 19 ,'javascript');
 person1.sayName();
 ```
 
