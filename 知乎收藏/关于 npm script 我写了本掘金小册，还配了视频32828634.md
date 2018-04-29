@@ -1,6 +1,6 @@
 # 关于 npm script 我写了本掘金小册，还配了视频
 
-![](https://pic3.zhimg.com/v2-c1733b526323a3638fa7d2981839c1f1_b.jpg)
+![](https://pic4.zhimg.com/v2-c1733b526323a3638fa7d2981839c1f1_b.jpg)
 
 > **不夸张的说，这可能是目前社区中最完整的把 npm script 和前端工作流相结合并运用到实际项目中的文字 + 视频版教程了，内容源于我对最佳实践的积累和实战，也是我精心编写和录制 1 个月的成果**。
 
@@ -88,11 +88,11 @@
 
 下面是到目前为止小册文字部分收集到的部分读者反馈，对于每位读者的留言，我都会认真回复，如果你加了读者交流群，在群里提到的问题，我也会尽力解答。
 
-![](https://pic4.zhimg.com/v2-2c111b19bfe922a3538ebf748de75e75_b.jpg)![](https://pic2.zhimg.com/v2-2f74bf9ed0cf0a4aeb9d77d9011c28a9_b.jpg)![](https://pic4.zhimg.com/v2-6342e973687bb5565aa81b2f7049f6c0_b.jpg)
+![](https://pic4.zhimg.com/v2-2c111b19bfe922a3538ebf748de75e75_b.jpg)![](https://pic3.zhimg.com/v2-2f74bf9ed0cf0a4aeb9d77d9011c28a9_b.jpg)![](https://pic2.zhimg.com/v2-6342e973687bb5565aa81b2f7049f6c0_b.jpg)
 
 关于视频部分呢？如果你够细心，你能得到小册内容之外的很多东西，毕竟视频里面我整个开发环境都展示出来了，欢迎来撩（微信：feweekly）！
 
-![](https://pic3.zhimg.com/v2-33af6eb763ebc47dcb4685f4c0ed8037_b.jpg)
+![](https://pic4.zhimg.com/v2-33af6eb763ebc47dcb4685f4c0ed8037_b.jpg)
 
 **如果这篇小册涵盖的内容跟你的技能修炼路线图吻合，强烈建议你阅读完整内容（代价是请我喝杯咖啡， ），对于怕冲动付费的同学，小册开放了部分章节供你试读**。
 

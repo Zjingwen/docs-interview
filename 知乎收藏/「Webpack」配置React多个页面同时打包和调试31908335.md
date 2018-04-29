@@ -22,7 +22,7 @@
 
 之后，会启动Nodejs去读取脚本，因此我们的所有脚本其实都是在Nodejs中运行的。
 
-![](https://pic3.zhimg.com/v2-e6cc2d4ef997b9dcf09605322ea2ed40_b.jpg)
+![](https://pic1.zhimg.com/v2-e6cc2d4ef997b9dcf09605322ea2ed40_b.jpg)
 
 简单介绍一下：
 
@@ -37,7 +37,7 @@
 
 这一行划重点的地方就是我们默认的工程最初的index.js，想要配置多页面应用可以从这里入手，我们在src目录下新建一个admin.js。
 
-![](https://pic2.zhimg.com/v2-251e786b2bfa833894fa04b939198716_b.jpg)![](https://pic4.zhimg.com/v2-d15a7822b52fdbe74183eeb80e65b91c_b.jpg)
+![](https://pic2.zhimg.com/v2-251e786b2bfa833894fa04b939198716_b.jpg)![](https://pic1.zhimg.com/v2-d15a7822b52fdbe74183eeb80e65b91c_b.jpg)
 
 ## **配置webpack的入口**
 
@@ -45,11 +45,11 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 先进入webpack.config.dev.js，找到entry那里。
 
-![](https://pic2.zhimg.com/v2-dbd335bcf91765bf1fa245cf981cf61e_b.jpg)
+![](https://pic1.zhimg.com/v2-dbd335bcf91765bf1fa245cf981cf61e_b.jpg)
 
 从这样改成下面这样，我们可以配置好了一个多页面配置了。
 
-![](https://pic3.zhimg.com/v2-fdfac8deeab9fb04fe4270b0fbbc01fe_b.jpg)
+![](https://pic2.zhimg.com/v2-fdfac8deeab9fb04fe4270b0fbbc01fe_b.jpg)
 
 这里的意思就是，入口有两个，名字分别是index和admin，他们会在webpack服务器启动的时候，分别生成名字叫index.js和admin.js的chunks文件。（其实你不用管什么是chunks....
 
@@ -67,7 +67,7 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 </div>
 
-![](https://pic2.zhimg.com/v2-31906f7de92ef744aaad7f85e5187399_b.jpg)
+![](https://pic1.zhimg.com/v2-31906f7de92ef744aaad7f85e5187399_b.jpg)
 
 我们还注意到这里还有几个参数，比较重要的是template参数，其实就是指定了我们用哪个html模版，如果你对原来的不爽，或者是用其他模版，可以在这里修改。
 
@@ -97,7 +97,7 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 **第一步：改造目录**
 
-![](https://pic2.zhimg.com/v2-123b6f948a21c74b2c9eea33fe8aae4c_b.jpg)
+![](https://pic4.zhimg.com/v2-123b6f948a21c74b2c9eea33fe8aae4c_b.jpg)
 
 每个目录下都有一个顶层的index.js
 
@@ -113,7 +113,7 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 </div>
 
-![](https://pic4.zhimg.com/v2-85e41aa7aacc53882a4605a8be8eba73_b.jpg)
+![](https://pic1.zhimg.com/v2-85e41aa7aacc53882a4605a8be8eba73_b.jpg)
 
 <figcaption>并且在最后导出</figcaption>
 
@@ -121,7 +121,7 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 **第三步：在webpack.config.dev.js中添加setup函数，用于生成我们需要的配置**
 
-![](https://pic4.zhimg.com/v2-c2881bb9a33b5f7888d833d1de8e7dcb_b.jpg)
+![](https://pic1.zhimg.com/v2-c2881bb9a33b5f7888d833d1de8e7dcb_b.jpg)
 
 <div>
 
@@ -135,7 +135,7 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 <figcaption>入口就这行</figcaption>
 
-![](https://pic3.zhimg.com/v2-9d5d87a0a88bfb97c3f3990ce018bea7_b.jpg)
+![](https://pic1.zhimg.com/v2-9d5d87a0a88bfb97c3f3990ce018bea7_b.jpg)
 
 <figcaption>插件地方改成这样</figcaption>
 
@@ -181,7 +181,7 @@ webpack有四大概念，入口，出口，loader，插件，以后有时间会�
 
 然后跳转到这个函数的定义，加上这个参数
 
-![](https://pic2.zhimg.com/v2-860775ace25312abcd6f65619d1d35c9_b.jpg)
+![](https://pic1.zhimg.com/v2-860775ace25312abcd6f65619d1d35c9_b.jpg)
 
 往下走点：
 

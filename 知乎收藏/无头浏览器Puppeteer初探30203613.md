@@ -1,6 +1,6 @@
 # 无头浏览器Puppeteer初探
 
-![](https://pic4.zhimg.com/v2-c3b06c0324038e1fb143c27ce3df243c_b.jpg)
+![](https://pic1.zhimg.com/v2-c3b06c0324038e1fb143c27ce3df243c_b.jpg)
 
 > 作者简介 轻声 蚂蚁金服数据前端
 

@@ -7,9 +7,9 @@ Node：
 
 2.《nodejs开发指南》。180多页，很好，书中项目做一下，知道基础，及基本的配合express，jquery，bootstrap，数据库MongoDB
 
-另附一些node实现书中例子的一些变化[使用Express3.0实现](http://www.cnblogs.com/meteoric_cry/archive/2012/07/23/2604890.html)  
+另附一些node实现书中例子的一些变化[使用Express3.0实现](http://www.cnblogs.com/meteoric_cry/archive/2012/07/23/2604890.html)
 
-3.开始看express创建初始项目的源代码对比2中的书，发现express更新后新的特性：[Migrating from 3.x to 4.x · strongloop/express Wiki · GitHub](https://github.com/strongloop/express/wiki/Migrating%2520from%25203.x%2520to%25204.x)
+[3.开始看express创建初始项目的源代码对比2中的书，发现express更新后新的特性：](http://www.cnblogs.com/meteoric_cry/archive/2012/07/23/2604890.html)[Migrating from 3.x to 4.x · strongloop/express Wiki · GitHub](https://github.com/strongloop/express/wiki/Migrating%2520from%25203.x%2520to%25204.x)
 
 看express官网api
 

@@ -1,6 +1,6 @@
 # 三步学会用绘图利器 OmniGraffle 绘制流程图
 
-![](https://pic3.zhimg.com/v2-5896bb728b10a0fb54f9a958639e7a65_b.jpg)![](http://pic4.zhimg.com/v2-60cea90f9fa6dd77d142e3def81b5a37_b.jpg)
+![](https://pic3.zhimg.com/v2-5896bb728b10a0fb54f9a958639e7a65_b.jpg)![](https://pic3.zhimg.com/v2-60cea90f9fa6dd77d142e3def81b5a37_b.jpg)
 
 OmniGraffle 是 Mac 上的绘图利器，曾获2002年苹果设计奖。Graffle 在很多方面对标 Windows 系统上的 Microsoft Visio，是制作各种文档的绝妙工具。这篇文章作为 Graffle 系列教程的第二篇，会手把手带着大家做一个简单的流程图，希望诸位能在实践中理解软件的功能。
 
@@ -13,20 +13,20 @@ OmniGraffle 是 Mac 上的绘图利器，曾获2002年苹果设计奖。Graffle 
 
 ## **相关下载：**
 
-*   软件下载：[OmniGroup 官方网址下载](http:https://www.omnigroup.com/download/latest/omnigraffle/)
-*   教学材料：[百度网盘](http:https://pan.baidu.com/s/1hrLnf60)
+*   软件下载：[OmniGroup 官方网址下载](https:https://www.omnigroup.com/download/latest/omnigraffle/)
+*   教学材料：[百度网盘](https:https://pan.baidu.com/s/1hrLnf60)
 
 ## **效果预览：**
 
-![](http://pic4.zhimg.com/v2-f9797abda65aa17dcc5eaf2512872f33_b.jpg)
+![](https://pic4.zhimg.com/v2-f9797abda65aa17dcc5eaf2512872f33_b.jpg)
 
 上图简单的还原了当年赵瑞龙公子来吕城筹建赵家印钞机的流程。
 
-![](http://pic3.zhimg.com/v2-41d1a0d384dcd215c32cd87aff6ac1f6_b.jpg)
+![](https://pic1.zhimg.com/v2-41d1a0d384dcd215c32cd87aff6ac1f6_b.jpg)
 
 ## **第一步，绘制流程图元素：**
 
-![](http://pic2.zhimg.com/v2-bdfe3459f66d9fc864602b46918424c9_b.jpg)
+![](https://pic4.zhimg.com/v2-bdfe3459f66d9fc864602b46918424c9_b.jpg)
 
 首先需要了解流程图里都有哪些元素，各自的定义是什么。上图就是我在平时绘制流程图时常用的元素，大家可以做个参考。
 
@@ -34,11 +34,11 @@ OmniGraffle 是 Mac 上的绘图利器，曾获2002年苹果设计奖。Graffle 
 
 按快捷键「2」或「s」调出形状绘制功能，在画板上拖动光标即可。光标上会给出尺寸参考。
 
-![](https://pic4.zhimg.com/v2-3e0f989f8df5efd6f170e7baab2a703d_b.jpg)
+![](https://pic3.zhimg.com/v2-3e0f989f8df5efd6f170e7baab2a703d_b.jpg)
 
 在「Object」边栏中可以找到「Geometry」面板，在这里可以调整形状的具体尺寸。
 
-![](https://pic4.zhimg.com/v2-f921ea9883d2584042406b3df87f6606_b.jpg)
+![](https://pic2.zhimg.com/v2-f921ea9883d2584042406b3df87f6606_b.jpg)
 
 在「Object」边栏中可以找到「Fill」面板，在这里可以更改形状的填充色。
 
@@ -46,13 +46,13 @@ OmniGraffle 是 Mac 上的绘图利器，曾获2002年苹果设计奖。Graffle 
 
 在「Object」边栏中可以找到「Shape」面板，在这里可以改变图层的形状。
 
-![](http://pic2.zhimg.com/v2-2909ab315fbc0c10431909a3ffd77769_b.jpg)
+![](https://pic2.zhimg.com/v2-2909ab315fbc0c10431909a3ffd77769_b.jpg)
 
 笔者有强迫症，每个元素视觉面积一致才能呼吸。其中，起止元素比较重要，故采用强视觉引导的颜色样式。「尺寸」中的单位是厘米，大家可以当作参考。
 
 ## **第二步，填写内容：**
 
-![](https://pic4.zhimg.com/v2-a3ea9a548bd0b0ee1d8cea84dccc1fd1_b.jpg)
+![](https://pic1.zhimg.com/v2-a3ea9a548bd0b0ee1d8cea84dccc1fd1_b.jpg)
 
 在「Object」边栏中可以找到「Font」面板，在这里可以更改字体、字号、字重以及颜色等。为方便阅读，建议采用无衬线字体。
 
@@ -62,7 +62,7 @@ OmniGraffle 是 Mac 上的绘图利器，曾获2002年苹果设计奖。Graffle 
 
 ## **第三步：连接元素**
 
-![](https://pic4.zhimg.com/v2-39776859e4926170a25872a467a6428e_b.jpg)
+![](https://pic3.zhimg.com/v2-39776859e4926170a25872a467a6428e_b.jpg)
 
 在「Properties」边栏中可以找到「Connections」面板，添加磁力点，需要注意「判断元素」，选择「on each vertex」在四角安装磁力点。
 
@@ -78,7 +78,7 @@ OmniGraffle 是 Mac 上的绘图利器，曾获2002年苹果设计奖。Graffle 
 
 在「Object」边栏中可以找到「Stroke」面板，在这里可以改变线条的宽度和颜色。至此，绘制流程图的技巧就教学完毕了。一些细节的打磨可以参考相关下载中的教学材料。
 
-![](http://pic2.zhimg.com/v2-7b2dd8650055759905ed8104a262bd19_b.jpg)
+![](https://pic3.zhimg.com/v2-7b2dd8650055759905ed8104a262bd19_b.jpg)
 
 我在日常的设计工作中常用 Graffle 输出交互设计文档，使用了一年，积攒了一些经验。想起之前探索的阶段，苦于中文资料、教程很少，只能在官方论坛里潜水、学习。因此，我在这里将使用 Graffle 的流程按照很小的颗粒度细分，编写手把手的教程，希望能够起到抛砖引玉的效果。
 

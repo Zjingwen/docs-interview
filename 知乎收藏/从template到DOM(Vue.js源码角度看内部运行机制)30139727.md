@@ -1,6 +1,6 @@
 # 从template到DOM(Vue.js源码角度看内部运行机制)
 
-![](https://pic3.zhimg.com/v2-5f9982b6ff4f8471e166b4ce52153d4c_b.jpg)
+![](https://pic4.zhimg.com/v2-5f9982b6ff4f8471e166b4ce52153d4c_b.jpg)
 
 **写在前面**
 
@@ -228,7 +228,7 @@ isOnce: 是否有v-once指令
 
 首先说一下patch的核心diff算法，diff算法是通过同层的树节点进行比较而非对树进行逐层搜索遍历的方式，所以时间复杂度只有O(n)，是一种相当高效的算法。
 
-![](https://pic3.zhimg.com/v2-104740ce35bc6b5027fb5a295c7d13f0_b.jpg)![](https://pic1.zhimg.com/v2-78ed0f7a71736796f0d4c31f5a9d1b9c_b.jpg)
+![](https://pic4.zhimg.com/v2-104740ce35bc6b5027fb5a295c7d13f0_b.jpg)![](https://pic1.zhimg.com/v2-78ed0f7a71736796f0d4c31f5a9d1b9c_b.jpg)
 
 这两张图代表旧的VNode与新VNode进行patch的过程，他们只是在同层级的VNode之间进行比较得到变化（第二张图中相同颜色的方块代表互相进行比较的VNode节点），然后修改变化的视图，所以十分高效。
 
@@ -268,7 +268,7 @@ patchVnode的规则是这样的：
 
 直接看源码可能比较难以捋清其中的关系，我们通过图来看一下。
 
-![](https://pic3.zhimg.com/v2-9d4a83c7a917571940a8edd29396c345_b.jpg)
+![](https://pic2.zhimg.com/v2-9d4a83c7a917571940a8edd29396c345_b.jpg)
 
 首先，在新老两个VNode节点的左右头尾两侧都有一个变量标记，在遍历过程中这几个变量都会向中间靠拢。当oldStartIdx <= oldEndIdx或者newStartIdx <= newEndIdx时结束循环。
 
@@ -300,7 +300,7 @@ newEndIdx => newEndVnode
 
 这说明oldEndVnode跑到了oldStartVnode的前面，进行patchVnode的同时真实的DOM节点移动到了oldStartVnode的前面。
 
-![](https://pic2.zhimg.com/v2-aa8d34c20a47b212378b1da678355af9_b.jpg)
+![](https://pic1.zhimg.com/v2-aa8d34c20a47b212378b1da678355af9_b.jpg)
 
 如果以上情况均不符合，则通过createKeyToOldIdx会得到一个oldKeyToIdx，里面存放了一个key为旧的VNode，value为对应index序列的哈希表。从这个哈希表中可以找到是否有与newStartVnode一致key的旧的VNode节点，如果同时满足sameVnode，patchVnode的同时会将这个真实DOM（elmToMove）移动到oldStartVnode对应的真实DOM的前面。
 
@@ -354,7 +354,7 @@ attr只需要在create以及update钩子被调用时更新DOM的attr属性即可
 
 至此，我们已经从template到真实DOM的整个过程梳理完了。现在再去看这张图，是不是更清晰了呢？
 
-![](https://pic7.zhimg.com/v2-d777bbbf663f281783a84284ce7d3d18_b.jpg)
+![](https://pic4.zhimg.com/v2-d777bbbf663f281783a84284ce7d3d18_b.jpg)
 
 **关于**
 
