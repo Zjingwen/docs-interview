@@ -1,5 +1,4 @@
 # UI
-* [为什么页面跟设计稿差距这么大？是啊！为毛啊？](http://www.uisdc.com/design*just*stay*design)
 * [uimaker * 后台管理模板](http://www.uimaker.com/uimakerdown/bstemplate/)
 * [字数多的海报如何设计才能抢眼](http://www.zhihu.com/question/36121669)
 * [原型工具－偏移动应用方面](https://www.fluidui.com)
