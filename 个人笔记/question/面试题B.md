@@ -1,4 +1,4 @@
-##填空题（10题） 
+# 面试题
 
 1. 号码段为131到139的11位手机号码正则校验： 
 
@@ -35,6 +35,9 @@ console.log(s);
 1. CSS3的box-sizing的取值及各值的说明。
 
 2. 请写出下列代码的执行结果：
+
+
+```
 function switchCase(value){
     switch(value){
         case ‘0’:console.log(‘case 0’);
@@ -43,11 +46,14 @@ function switchCase(value){
         default:console.log(‘default’);
     }
 }
+```
  
 3. 列举出通过CSS样式隐藏元素的方法，并说明其区别。
 
 4. 请写出下面代码的执行结果：
 
+
+```
 var s = {
     s: ‘student’,
     getS: function(){
@@ -66,6 +72,7 @@ s.getS();
 s.getS.apply(t);    
 getS();
 getS1.call(t);
+```
 
 
 5. 列出移动端开发中适配各种屏幕尺寸的解决方案(至少3种)

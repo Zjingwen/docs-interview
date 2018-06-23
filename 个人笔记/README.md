@@ -11,13 +11,17 @@
 * [EventLoop.md](javascript/EventLoop.md)
 * [vue的生命周期.md](javascript/vue的生命周期.md)
 * [vue的nextTick.md](javascript/vue的nextTick.md)
+* [prototype和__proto__和实例对象和构造函数](javascript/prototype和__proto__和实例对象和构造函数.md)
+* [对象、属性类型、原型对象](javascript/对象、属性类型、原型对象.md)
 
-## 问题
-* [对组件的理解](question/2018-03-09.md)
-* [prototype和__proto__和实例对象和构造函数](question/2018-01-17.md)
-* [对象、属性类型、原型对象](question/2018-03-11.md)
-* [面试题](question/2018-03-26.md)
-* [面试题](question/2018-04-03.md)
-* [持续交付](question/2018-04-03.md)
-* [面试题](question/2018-04-21.md)
+## question
+* [对组件的理解](question/对组件的理解.md)
+* [持续发布、持续交付、持续集成](question/持续发布、持续交付、持续集成.md)
+* [面试题A](question/面试题A.md)
+* [面试题B](question/面试题B.md)
+* [面试题C](question/面试题C.md)
+* [面试题D](question/面试题D.md)
+* [面试题E](question/面试题E.md)
+* [面试题F](question/面试题F.md)
+* [面试题G](question/面试题G.md)
 
