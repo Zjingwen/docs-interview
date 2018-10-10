@@ -11,8 +11,8 @@
 当然，这里除了Behance外还有其他的选择，比如[Draft.im - Get Invited to Dribbble](http://draft.im)这个网站，它提供了专门为获得邀请码而发布作品的渠道，但我感觉这种手段比较被动，耗时太长，不推荐。  
 
 接下来就是重点了，在Dribbble上搜索关键词invite，然后在搜索结果页面点击recent，查看最新的关于invite的shots，比如下图  
-![](https://pic1.zhimg.com/f216cdb4a75bd46d53ba0bd6e6cad488_b.png)这里基本上是专门用于Player邀请Prospect的渠道，当然也可以看到一些感谢邀请的debut。可以看到标题中有Dribbble invite字样的shot就是Player用来告知Prospect“我有邀请码”的信息。一般每天都会有7-10个这样的shot，一般每人都有两个邀请码，有的人还会有三个或更多。而据我目测，一般粉丝在200人左右的Player也就50-80人向他请求邀请，竞争还不是特别的激烈，成功率还是很大的。点击进去可以查看申请他邀请的具体方法，例子如下：  
-![](https://pic4.zhimg.com/3798f27a697423adc9e80b3d36aea7ff_b.png)（忽略没刷出来的图片。。）  
+![](https://pic2.zhimg.com/50/f216cdb4a75bd46d53ba0bd6e6cad488_b.jpg)这里基本上是专门用于Player邀请Prospect的渠道，当然也可以看到一些感谢邀请的debut。可以看到标题中有Dribbble invite字样的shot就是Player用来告知Prospect“我有邀请码”的信息。一般每天都会有7-10个这样的shot，一般每人都有两个邀请码，有的人还会有三个或更多。而据我目测，一般粉丝在200人左右的Player也就50-80人向他请求邀请，竞争还不是特别的激烈，成功率还是很大的。点击进去可以查看申请他邀请的具体方法，例子如下：  
+![](https://pic3.zhimg.com/50/3798f27a697423adc9e80b3d36aea7ff_b.jpg)（忽略没刷出来的图片。。）  
 
 一般的情况是对方会给出他的Email，然后让你把你的portfolio或者Best work发过去，看清楚对方的要求，按要求发是最好的。要portfolio的你就把自己的Behance作品页面的链接发过去，要Best work的你就在邮件中添加你最好的一张作品就可以了。作品的尺寸最好是800*600，这是Dribbble上的大图尺寸，格式肯定是PNG最好。  
 
@@ -35,7 +35,7 @@
 其实很简单，符合Dribbble的潮流的作品最容易被人看上。比如一些精致的图标，有趣的卡通画，如果你会做炫酷的UI动效或者动画，那邀请码肯定非你莫属。另外一些精细的拟物作品也很容易吸引人的眼球。总之就是作品妖展现出你的实力与技术，要足够的炫技。  
 
 如果你这些都不擅长（比如我。。。），那就好好包装一番你的作品，好的包装可以让平庸的作品上升一两个档次，最简单的方法，加一点倾斜的视角－－。比如我用来申请邀请码时用的作品：  
-![](https://pic2.zhimg.com/556879c34fee04b6f43eb9316852d0a9_b.png)  
+![](https://pic3.zhimg.com/50/556879c34fee04b6f43eb9316852d0a9_b.jpg)  
 以上，祝愿大家都能早日Join the game。  
 
 我的Dribbble：[Dribbble - lysoul](https://dribbble.com/lysoul)  

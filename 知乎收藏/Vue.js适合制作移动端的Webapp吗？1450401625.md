@@ -72,10 +72,10 @@ webpack.config.js文件：
 如果去掉timeline-master这个div，那么转场动画就会失效  
 
 大屏  
-![](https://pic4.zhimg.com/9c8a3ed2e3092d2e9fcf3b8d9c148703_b.png)  
-![](https://pic2.zhimg.com/f4a6bb0a7f8a6883630c45ddba5e594d_b.png)  
+![](https://pic1.zhimg.com/50/9c8a3ed2e3092d2e9fcf3b8d9c148703_b.jpg)  
+![](https://pic4.zhimg.com/50/f4a6bb0a7f8a6883630c45ddba5e594d_b.jpg)  
 ipad  
-![](https://pic3.zhimg.com/b22a976450223422e83013d79abe6392_b.png)  
-![](https://pic1.zhimg.com/09d548dc524829d17e5e7c744448033c_b.png)  
+![](https://pic4.zhimg.com/50/b22a976450223422e83013d79abe6392_b.jpg)  
+![](https://pic1.zhimg.com/50/09d548dc524829d17e5e7c744448033c_b.jpg)  
 iphone 6 plus  
-![](https://pic2.zhimg.com/c49af8ca46ece6bc4189772684457129_b.png)
+![](https://pic4.zhimg.com/50/c49af8ca46ece6bc4189772684457129_b.jpg)

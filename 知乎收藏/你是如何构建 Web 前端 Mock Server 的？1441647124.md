@@ -37,7 +37,7 @@
 这种写法，省略了host，在线下开发时，其最终结果是请求 [<span>http://</span><span>127.0.0.1:3000/bar</span><span></span>](http://127.0.0.1:3000/bar)，而由于我们在mock server中实现了路由规则，这个请求实际上被代理到了测试/生产环境去获取数据。而当你把代码部署到线上时，其访问真实请求地址又自动变成了你期望的 [http://www.foo.bar，](http://www.foo.com/bar)正常运行。  
 
 画个图总结一下：  
-![](https://pic4.zhimg.com/dabc8dd12b7b238e9d3fad9f65e974bf_b.png)  
+![](https://pic4.zhimg.com/50/dabc8dd12b7b238e9d3fad9f65e974bf_b.jpg)  
 补充一些Tips：  
 
 *   由于Mock Server需要具备渲染模板的能力，因此可能需要一种轻量的服务端跨平台server实现方案，如果是java的后端，可以考虑使用jetty，一个1.8M的jar即可；如果是php的后端，可以考虑使用php 5.4以后内置的server，启动命令是 php -S 127.0.0.1:3000 router.php；如果是Nodejs，那就很简单了，估计都不需要Mock Server，本地也可以跑的
