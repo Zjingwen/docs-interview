@@ -1,5 +1,4 @@
 # UI
-* [uimaker * 后台管理模板](http://www.uimaker.com/uimakerdown/bstemplate/)
 * [字数多的海报如何设计才能抢眼](http://www.zhihu.com/question/36121669)
 * [原型工具－偏移动应用方面](https://www.fluidui.com)
 * [你见过的最棒的个人博客界面是什么样的](http://www.zhihu.com/question/29755481)
