@@ -1,9 +1,9 @@
 # vue的生命周期
 
 ## 实例生命周期
+![lifecycle](https://lh3.googleusercontent.com/-G8ntAtMqEBc/W_UEJpfqRJI/AAAAAAAAAEU/P_JOIA5EObAmGcSlvzh7BZChc_uH8JThQCHMYCw/I/lifecycle.png)
 
-![vue生命周期](http://o7s01mlar.bkt.clouddn.com/2018-01-31-vue生命周期.jpg)
-![Vue 生命周期](http://o7s01mlar.bkt.clouddn.com/2018-01-31-Vue 生命周期.png)
+![2018-01-31-Vue 生命周期](https://lh3.googleusercontent.com/-jfg1d6Z1EPQ/W_UDXl9L_uI/AAAAAAAAADs/VLtiS_0tYW0qPW14yQzPC-xoB4KbJB3pwCHMYCw/I/2018-01-31-Vue%2B)
 
 vue实例化过程，是完全按照一个生命周期执行的。我将其分为3中，数据与模版初始化生命周期、数据变化生命周期、实例销毁生命周期。
 
@@ -112,7 +112,7 @@ vue实例化过程，是完全按照一个生命周期执行的。我将其分�
 
 ## 组件生命周期
 
-![vue compone生命周期](http://o7s01mlar.bkt.clouddn.com/2018-01-31-vue compone生命周期.png)
+![2018-01-31-vue compone生命周期](https://lh3.googleusercontent.com/-g-7jzoZvb3c/W_UDcyyWqmI/AAAAAAAAADw/JTDmRT2yEEkY_ArKic5KCBpTuAo814x2wCHMYCw/I/2018-01-31-vue%2Bcompone)
 
 组件也有它的生命周期，当用keep-alive时，组件的生命周期可以分为两个：
 

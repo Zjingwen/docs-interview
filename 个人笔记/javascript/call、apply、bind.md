@@ -29,7 +29,8 @@ o你就是个逗比你是不是傻
 o2你就是个逗比你是不是傻啊
 */
 ```
-![WechatIMG59](http://o7s01mlar.bkt.clouddn.com/2017-01-17-WechatIMG59.jpeg)
+![2017-01-17-WechatIMG59](https://lh3.googleusercontent.com/-_CBdKTlEOXY/W_UDobA24OI/AAAAAAAAAD4/2LiUGHoHFOoL7x01H2wPNHge2cGrYNtoACHMYCw/I/2017-01-17-WechatIMG59.jpeg)
+
 
 通过call，将o()函数的this传递给f(name,age)，并且给name，age赋值。
 

@@ -34,7 +34,8 @@ test2();
 
 流程图：
 
-![](http://o7s01mlar.bkt.clouddn.com/EventLoop.jpg)
+![EventLoop](https://lh3.googleusercontent.com/-Sjza_v03Jnw/W_UDuNFXXeI/AAAAAAAAAD8/cZRG4f88nG4G45sCy1OigcUlOS_YBe45ACHMYCw/I/EventLoop.jpg)
+
 
 调用栈先插入main()指向文件本身，然后按照执行的从上到下顺序，插入调用栈。然后按照先入先出的选择依次执行栈中的人物，当一个任务完成之后，清空栈，插入下一个任务。每一次进入调用栈的只有一个任务，如果进入的是一个函数，则会展开函数依次执行。
 
@@ -50,7 +51,7 @@ console.log(3);
 
 流程图：
 
-![](http://o7s01mlar.bkt.clouddn.com/EventLoop2.jpg)
+![EventLoop2](https://lh3.googleusercontent.com/-mj0r8PkALHM/W_UDxLnLHkI/AAAAAAAAAEA/kF0TdaFbLe00I4mMy6wJ1qYyjQpCqVDeQCHMYCw/I/EventLoop2.jpg)
 
 只有当栈为空的时候，下一个任务才会被推送到栈中，每一次只会执行一个任务。
 
@@ -58,7 +59,7 @@ console.log(3);
 ## 任务队列
 用来执行web Api任务的队列，等任务有结果后，将异步任务推入callblock queue中。调用了xhr、dom、setTimeout，等web Api接口的任务，都属于异步任务。
 
-![](http://o7s01mlar.bkt.clouddn.com/EventLoop3.jpg)
+![EventLoop3](https://lh3.googleusercontent.com/-4FSQn6w9QIQ/W_UDztzd8WI/AAAAAAAAAEE/nUL8uIrS610jlLMgI7-tsuRlvF-Da-aIwCHMYCw/I/EventLoop3.jpg)
 
 ## callblock queue
 event queue队列中，一旦有完成的任务，就将这个任务推入callblock queue队列中，等待调用栈调用。
