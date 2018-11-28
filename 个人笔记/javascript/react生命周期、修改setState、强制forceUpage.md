@@ -1,97 +1,173 @@
-# 生命周期、修改setState、强制forceUpage
+# React生命周期
+
 ![WechatIMG2006](https://lh3.googleusercontent.com/-jRhjzvFA3xI/W_uliAGt2wI/AAAAAAAAAF4/GbUq0TYYoagiQ2bhFq_GIQnako7FHnqkQCHMYCw/I/WechatIMG2006.png)
 
 [TOC]
 
-## 初始化 
+## api
+### constructor 实例化
+
+```javascript
+class A extends React.Component{
+	constructor(){
+		super();
+	}
+}
+```
+* 实例化对象
+* 继承React.Component
+* 初始化state
+
+### static getDerivedStateFromProps
+
+```javascript
+class A extends React.Component{
+	static getDerivedStateFromProps(props,state){
+		return Object
+	}
+}
+```
+* update更新时，render之前，dom渲染前
+* 必须有初始化state
+* 静态方法，没有this
+* 可以return出对象，设置state
+
+### shouldComponentUpdate
+
+```javascript
+class A extends React.Component{
+	shouldComponentUpdate(nextProps, nextState){
+		return Boolean
+	}
+}
+```
+* update更新时，render之前，dom渲染前
+* return 一个布尔值来判断是否渲染
+* 默认return true
+
+### render
+
+```javascript
+class A extends React.Component{
+	render(){
+		return JSX
+	}
+}
+```
+* 将jsx渲染为真实DOM
+
+### getShapshotBeforeUpdate
+
+```javascript
+class A extends React.Component{
+	getShapshotBeforeUpdate(prevProps,prevState){
+		return ‘getShapshotBeforeUpdate’
+	}
+	componentDidUpdate(prevProps,prevState,snapshot){
+	   // TODO snapshot == ‘getShapshotBeforeUpdate’
+	}
+}
+```
+* update更新时，render之前，dom渲染前
+* 无默认返回值，可返回null
+* return 一个值，用来作为componentDidUpdate的第三个参数
+
+### componentDidMount
+
+```javascript
+class A extends React.Component{
+	componentDidMount(){}
+}
+```
+* render之后，dom渲染后
+
+### componentDidUpdate
+
+```javascript
+class A extends React.Component{
+	componentDidUpdate(prevProps,prevState,snapshot){}
+}
+```
+* update更新时，render之后，dom渲染后
+* snapshot为getShapshotBeforeUpdae的return
+
+### componentWillUnmount
+
+```javascript
+class A extends React.Component{
+	componentWillUnmount(){}
+}
+```
+* dom卸载
+
+## 流程
+
+### 初始化 
+
+```text
 constructor()
-![1111](https://lh3.googleusercontent.com/-wmMQlmj5un0/W_umLsPZnXI/AAAAAAAAAGA/rJGJA5Nl6SAktPRCATCBvvwuT560YmD9ACHMYCw/I/1111.png)
-
-* render之前
-
 static getDerivedStateFromProps(props,state)
-![2222](https://lh3.googleusercontent.com/-wZA9hOsoblk/W_unzF082YI/AAAAAAAAAGM/tcooJBpI-N8tak3HV0yReEcM1NzX4386QCHMYCw/I/2222.png)
-
-* update更新时，render之前，dom渲染前
-* 直接返回一个对象，设置为state，或者为null
-* 必须同时有props和state，该方法才能成立，不然会产生警告
-* 静态方法，无法访问this
-
 render()
-![3333](https://lh3.googleusercontent.com/-EaBD8NxH5WY/W_uojVAouTI/AAAAAAAAAGg/QQPW7UwtCogPDVj2Mglp1MwpUjsbaR6yQCHMYCw/I/3333.png)
-
-* 渲染、挂载DOM
-
 componentDidMount()
-![4444](https://lh3.googleusercontent.com/-x2C-9p3EBk0/W_uo1_mUH8I/AAAAAAAAAGo/cSZ8eoJ2t9wePIHvokKalL08sA-kbe8DwCHMYCw/I/4444.png)
+```
 
-* update后，render之前，dom渲染后
 
-## 属性更新
-> New Props
+### 属性更新
+ New Props
 
+```text
 static getDerivedStateFromProps(props,state)
-
 shouldComponentUpdate(nextProps, nextState)
-![5555](https://lh3.googleusercontent.com/-mnu4d5jYyt4/W_uty3xyXdI/AAAAAAAAAHA/ABGl5vRh5zwf_oDL0kAXvWDV45bLdYaMQCHMYCw/I/5555.png)
-
-* update更新时，render之前，dom渲染前
-* 监听props、state变化
-* 以参数的形式传入新的props、state
-* 返回布尔值来控制render是否更新
-
 render()
-
 getSnapshotBeforeUpdate(prevProps,prevState)
-![666](https://lh3.googleusercontent.com/-XQA4rGcO77Q/W_u1-QLhE_I/AAAAAAAAAHY/YgI39cWAjykqQVrnxN5CQnVOafjI14nnwCHMYCw/I/666.png)
-
-
-* update更新时，render之后，dom渲染之前
-* 返回一个值，作为componentDidUpdate的第三个参数
-
 componentDidUpdate()
-![777](https://lh3.googleusercontent.com/-AG9bvrDpj5o/W_u2Y6hmZmI/AAAAAAAAAHg/hnd2VB5s6f0DlbdrSBD4L5avh438-FmxgCHMYCw/I/777.png)
+```
 
+setState()
 
-* update更新时，render之后，dom渲染之后
-
-> setState()
-
+```text
 getDerivedStateFromProps()
 shouldComponentUpdate()
 render()
 getSnapshotBeforeUpdate()
 componentDidUpdate()
+```
 
-> forceUpdate()
+forceUpdate()
 
+```text
 getDerivedStateFromProps()
 render()
 getShapshotBeforeUpdate()
 componentDidUpdate()
+```
 
-## 组件卸载
-componentWillUnmount()
-![888](https://lh3.googleusercontent.com/-2v-VMowkk9k/W_u2ssZpwwI/AAAAAAAAAHo/t2fBPYefpzw8vuC-7l-Tkq8oUEzWHrj9QCHMYCw/I/888.png)
+## 触发生命周期的api
 
-* dom卸载后
+### setState 设置状态
+setState((prevState)=>({object}),function callback])
 
-## set state、load render
-
-### 设置状态
-setState(object nextState[, function callback])
+```
+this.setState(prevState=>({
+    ...prevState
+}),()=>{
+    ...
+})
+```
 
 * 触发一轮生命周期`getDerivedStateFromProps->shouldComponentUpdate->render->getSnapshotBeforeUpdate->componentDidUpdate`
-* nextState，为状态设置之后，state经过所有生命周期后调用
+* prevState为当前组件的state值
+* callback，为状态设置之后，state经过所有生命周期后调用
 
-![6666](https://lh3.googleusercontent.com/-3aIQM5JKyy0/W_zzPQUENYI/AAAAAAAAAIA/gxwCfUdvRqwTbYFXKtlOIb7412HZ0jYJgCHMYCw/I/6666.png)
+### forceUpage 强制更新
+forceUpage(function callback)
 
-### 强制更新
-forceUpage([function callback])
+```
+this.forceUpage(()=>{
+    ...
+})
+```
 
 * 触发一轮生命周期`getDerivedStateFromProps->render->componentDidUpdate`
 * callback，为生命周期之后调用
-
-![7777](https://lh3.googleusercontent.com/-DxDCSYFp02k/W_z8cONl0XI/AAAAAAAAAIY/d13M-hju6HEjHGmmbRNNHLxXNUM7wqV9QCHMYCw/I/7777.png)
-
 
