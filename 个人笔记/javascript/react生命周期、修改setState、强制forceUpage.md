@@ -1,10 +1,9 @@
-# react Api
-
-## 生命周期
+# 生命周期、修改setState、强制forceUpage
 ![WechatIMG2006](https://lh3.googleusercontent.com/-jRhjzvFA3xI/W_uliAGt2wI/AAAAAAAAAF4/GbUq0TYYoagiQ2bhFq_GIQnako7FHnqkQCHMYCw/I/WechatIMG2006.png)
 
-### 初始化 
+[TOC]
 
+## 初始化 
 constructor()
 ![1111](https://lh3.googleusercontent.com/-wmMQlmj5un0/W_umLsPZnXI/AAAAAAAAAGA/rJGJA5Nl6SAktPRCATCBvvwuT560YmD9ACHMYCw/I/1111.png)
 
@@ -28,7 +27,7 @@ componentDidMount()
 
 * update后，render之前，dom渲染后
 
-### 属性更新
+## 属性更新
 > New Props
 
 static getDerivedStateFromProps(props,state)
@@ -71,34 +70,28 @@ render()
 getShapshotBeforeUpdate()
 componentDidUpdate()
 
-### 组件卸载
+## 组件卸载
 componentWillUnmount()
 ![888](https://lh3.googleusercontent.com/-2v-VMowkk9k/W_u2ssZpwwI/AAAAAAAAAHo/t2fBPYefpzw8vuC-7l-Tkq8oUEzWHrj9QCHMYCw/I/888.png)
 
 * dom卸载后
 
-## state of props
+## set state、load render
 
 ### 设置状态
 setState(object nextState[, function callback])
 
-### 替换状态
-replaceState(object nextState[,function callback])
+* 触发一轮生命周期`getDerivedStateFromProps->shouldComponentUpdate->render->getSnapshotBeforeUpdate->componentDidUpdate`
+* nextState，为状态设置之后，state经过所有生命周期后调用
 
-### 设置属性
-setProps(object nextProps[,function callback])
+![6666](https://lh3.googleusercontent.com/-3aIQM5JKyy0/W_zzPQUENYI/AAAAAAAAAIA/gxwCfUdvRqwTbYFXKtlOIb7412HZ0jYJgCHMYCw/I/6666.png)
 
-### 替换属性
-replaceProps(object nextProps[,function callback])
-
-## 强制更新
+### 强制更新
 forceUpage([function callback])
 
-## 获取DOM
-DOMElement findDOMNode()
+* 触发一轮生命周期`getDerivedStateFromProps->render->componentDidUpdate`
+* callback，为生命周期之后调用
 
-## 判断组件挂载状态
-bool isMounted()
-
+![7777](https://lh3.googleusercontent.com/-DxDCSYFp02k/W_z8cONl0XI/AAAAAAAAAIY/d13M-hju6HEjHGmmbRNNHLxXNUM7wqV9QCHMYCw/I/7777.png)
 
 
