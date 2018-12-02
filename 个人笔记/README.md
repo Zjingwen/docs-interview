@@ -13,6 +13,7 @@
 * [vue的nextTick.md](javascript/vue的nextTick.md)
 * [prototype和__proto__和实例对象和构造函数](javascript/prototype和__proto__和实例对象和构造函数.md)
 * [对象、属性类型、原型对象](javascript/对象、属性类型、原型对象.md)
+* [react个人收集](javascript/react个人收集.md)
 
 ## question
 * [对组件的理解](question/对组件的理解.md)
