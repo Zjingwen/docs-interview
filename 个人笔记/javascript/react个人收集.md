@@ -551,3 +551,33 @@ TODO
 TODO
 ```
 
+# Context
+
+```
+TODO
+```
+
+# ReactDOM.createPortal
+
+```
+ReactDOM.createPortal(
+    React.Component | JSX, // react组件
+    element,// 节点元素
+);
+```
+
+# componentDidCatch
+
+```
+TODO
+```
+* 为什么不用try/catch
+
+# Render Props
+
+# React.StrictMode
+
+# React的事件池
+
+# Hooks
+
