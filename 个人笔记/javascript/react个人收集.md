@@ -2,9 +2,10 @@
 
 <div STYLE="page-break-after: always;"></div>
 
-# 生命周期详解
+# React的方法
+
 ![WechatIMG2006](https://lh3.googleusercontent.com/-jRhjzvFA3xI/W_uliAGt2wI/AAAAAAAAAF4/GbUq0TYYoagiQ2bhFq_GIQnako7FHnqkQCHMYCw/I/WechatIMG2006.png)
-## api
+## 生命周期详解
 ### constructor 实例化
 
 ```javascript
@@ -188,8 +189,6 @@ this.forceUpage(()=>{
 * callback，为生命周期之后调用
 
 <div STYLE="page-break-after: always;"></div>
-
-# React的方法
 
 ## React.Component
 * react的抽象基础类
@@ -575,9 +574,76 @@ TODO
 
 # Render Props
 
+```
+TODO
+```
+
 # React.StrictMode
+
+```
+TODO
+```
 
 # React的事件池
 
+```
+TODO
+```
+
 # Hooks
+
+* useState 状态挂钩
+
+```
+cosnt [当前状态值,更新函数] = useState(默认值)
+```
+
+* useEffect(function,[]) 效果挂钩
+
+```
+useEffect(()=>{},[]);
+```
+
+* useContext
+
+```
+TODO
+```
+
+* useReducer
+
+```
+TODO
+```
+
+* useCallback
+
+```
+TODO
+```
+
+* useMemo
+
+```
+TODO
+```
+
+* useRef
+
+```
+TODO
+```
+
+* useImperativeMethods
+
+```
+TODO
+```
+
+* useLayoutEffect
+
+```
+TODO
+```
+
 
