@@ -108,6 +108,13 @@ class A extends React.Component{
 ```
 * dom卸载
 
+### componentDidCatch
+
+```
+TODO
+```
+* 为什么不用try/catch
+
 ## 触发流程
 
 ### 初始化 
@@ -361,8 +368,6 @@ class C extends React.Component {
 React.forwordRef(props,ref)
 ```
 
-# React.Component的内置方法
-
 ## defaultProps
 
 * 设置props的默认值
@@ -565,13 +570,6 @@ ReactDOM.createPortal(
 );
 ```
 
-# componentDidCatch
-
-```
-TODO
-```
-* 为什么不用try/catch
-
 # Render Props
 
 ```
@@ -592,17 +590,92 @@ TODO
 
 # Hooks
 
-* useState 状态挂钩
+* useState 状态钩
+
+> 用来设置和更新状态
 
 ```
-cosnt [当前状态值,更新函数] = useState(默认值)
+const [状态变量,更新函数] = useState(默认值)
 ```
 
-* useEffect(function,[]) 效果挂钩
+```
+function A(){
+  const [count, setCount] = useState(0);
+
+  return(
+    <React.Fragment>
+      <p>Count: {count}</p>
+      <button onClick={()=>{setCount(count+1)}}>++</button>
+      <button onClick={()=>{setCount(count-1)}}>--</button>
+    </React.Fragment>
+  )
+};
+```
+
+* useEffect(function,[]) 效果钩
+
+> 基本格式
 
 ```
-useEffect(()=>{},[]);
+useEffect(()=>{
+    // componentDidMount
+    // componentDidUpdate
+    return ()=>{
+        // componentWillUnmount
+    }
+},[]);
 ```
+
+> useEffect是componentDidMount、componentDidUpdate、componentWillUnmount的结合。
+> 默认情况下，useEffect，会在每次componentDidMount、componentDidUpdate时执行。
+> 可以拿到DOM结构
+
+```
+function A(){
+  const [count,setCount] = useState(0)
+
+  useEffect(()=>{
+    document.getElementById('useEffect-A-count').innerText = `count: ${count}`;
+  });
+
+  function handleClick(){
+    setCount(count+1);
+  };
+
+  return (
+    <Fieldset title='useEffect-简单状态'>
+      <p id='useEffect-A-count'></p>
+      <input type='button' value='更新' onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+```
+
+> 如何在组件compoenntWillUnmount时触发useEffect
+
+```
+function B(){
+  const [show,setShow] = useState(true);
+  function Child(){
+    useEffect(()=>{
+      console.log('componentDidMount');
+      return ()=>{
+        console.log('componentWillUnmount');
+      }
+    })
+    return <p>B-Child</p>
+  };
+
+  return (
+    <Fieldset title='useEffect-在componentWillUnmunt时触发'>
+      <p>请查看log</p>
+      <input type='button' value='show' onClick={()=>setShow(!show)}/>
+      {show && <Child/>}
+    </Fieldset>
+  )
+};
+```
+
 
 * useContext
 
