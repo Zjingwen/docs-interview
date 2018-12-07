@@ -95,7 +95,7 @@ class A extends React.Component{
 }
 ```
 * update更新时，render之后，dom渲染后
-* snapshot为getShapshotBeforeUpdae的return
+* snapshot为getShapshotBeforeUpdate的return
 
 <div STYLE="page-break-after: always;"></div>
 
@@ -590,7 +590,7 @@ TODO
 
 # Hooks
 
-* useState 状态钩
+## useState 状态钩
 
 > 用来设置和更新状态
 
@@ -612,7 +612,7 @@ function A(){
 };
 ```
 
-* useEffect(function,[]) 效果钩
+## useEffect(function,[]) 效果钩
 
 > 基本格式
 
@@ -676,44 +676,126 @@ function B(){
 };
 ```
 
+> 利用第二个参数，让useEffect不会过度渲染
+> 为空数组，表示不依赖props或者state，将不会更新
+> 数组内表示当新的赋值，如果新值和旧值不想等，就更新
 
-* useContext
+```
+function D(){
+  const [count,setCount] = useState(0);
+  const [double,setDouble] = useState(count*2);
+  const [three,setThree] = useState(count*3);
+  
+  useEffect(()=>{
+    setDouble(count*2);
+  },[count*2])
+
+  useEffect(()=>{
+    setThree(count);
+  },[])// 为空数组，表示不依赖props或者state，将不会更新
+
+  return (
+    <Fieldset title='userEffect-利用第二个参数跳过效果优化'>
+      <p>+1: {count}</p>
+      <p>*2: {double}</p>
+      <p>not: {three}</p>
+      <input type='button' value='click' onClick={()=>setCount(count+1)}/>
+    </Fieldset>
+  )
+};
+```
+
+## useLayoutEffect
+
+> DOM渲染前反应的钩子
+> 基本配置和useEffect一致
+
+```
+function E(){
+  const [name,setName] = useState(null);
+  useLayoutEffect(()=>{
+    setTimeout(()=>{
+      setName('useLayoutEffect');
+    },3000);
+  },[]);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setName('useEffect');
+    },3000);
+  },[]);
+
+  return(
+    <Fieldset title='useLayoutEffecth和useEffect的区别'>
+      <span id='e-useEffect'>{name}</span>
+    </Fieldset>
+  )
+}
+```
+
+## useContext
+
+> 让一个参数在所有子组件中都能获取
+
+```
+const CountContext = createContext();
+function F(){
+  function ChildA(){
+    const countChild = useContext(CountContext);
+    return (
+      <p>
+        Child A count: {countChild}
+      </p>
+    )
+  };
+
+  function ChildB(){
+    const countChild = useContext(CountContext);
+    return (
+      <p>
+        Child B count: {countChild}
+      </p>
+    )
+  };
+
+  const [count,setCount] = useState(0);
+
+  return (
+    <Fieldset title='useContext'>
+      <CountContext.Provider value={count}>
+        <ChildA />
+        <ChildB />
+      </CountContext.Provider>
+      <input type='button' value='++' onClick={()=>setCount(count+1)}/>
+    </Fieldset>
+  )
+}
+```
+
+## useReducer
 
 ```
 TODO
 ```
 
-* useReducer
+## useCallback
 
 ```
 TODO
 ```
 
-* useCallback
+## useMemo
 
 ```
 TODO
 ```
 
-* useMemo
+## useRef
 
 ```
 TODO
 ```
 
-* useRef
-
-```
-TODO
-```
-
-* useImperativeMethods
-
-```
-TODO
-```
-
-* useLayoutEffect
+## useImperativeMethods
 
 ```
 TODO
