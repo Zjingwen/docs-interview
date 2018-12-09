@@ -705,7 +705,7 @@ function D(){
 };
 ```
 
-## useLayoutEffect
+## useLayoutEffect(function,[])
 
 > DOM渲染前反应的钩子
 > 基本配置和useEffect一致
@@ -732,9 +732,9 @@ function E(){
 }
 ```
 
-## useContext
+## useContext(createContext)
 
-> 让一个参数在所有子组件中都能获取
+> 参数在所有子组件中都能获取
 
 ```
 const CountContext = createContext();
@@ -771,34 +771,280 @@ function F(){
 }
 ```
 
-## useReducer
+## useReducer(reducer,initialState)
+
+> 类似redux的功能
 
 ```
-TODO
+const [state,dispatch] = useReducer(reducer,initialState,{action});
+// const [属性,动作] = useReducer(动作函数,初始值属性,初始动作);
+// 如何触发：dispatch(type);
 ```
 
-## useCallback
+```
+function reducer(state,action){
+  switch(action){
+    case 'reset':
+      return 0;
+      break;
+    case 'increment':
+      return state+1;
+      break;
+    case 'decrement':
+      return state-1;
+      break;
+    default:
+      return state;
+  };
+};
+
+function useReduceComponent(){
+  const [state,dispatch] = useReducer(reducer,0,'reset');
+
+  return (
+    <Fieldset title='useReduce'>
+      <p>{state}</p>
+      <input type='button' value='++' onClick={()=>dispatch('increment')}/>
+      <input type='button' value='--' onClick={()=>dispatch('decrement')}/>
+      <input type='button' value='reset' onClick={()=>dispatch('reset')}/>
+    </Fieldset>
+  );
+};
+```
+
+## useCallback(()=>{},[])
+
+> 返回一个记忆的memoized，默认情况下会记录上一次传递的值
+> 可以替代shouldComponentUpdate使用
 
 ```
-TODO
+function MemoizedConst ({num}){
+  const memoizedCallback = useCallback(()=>{
+    return num;
+  },[]);
+
+  return (
+    <Fieldset title='MemoizedConst'>
+      <p>记忆 num > {memoizedCallback()}</p>
+      <p>原始 num > {num}</p>
+    </Fieldset>
+  )
+};
+
+function UseCallbackComponent (){
+  let [num,setNum] = useState([1,2,3]);
+  useEffect(()=>{
+    setTimeout(function(){
+      setNum([3,4,5])
+    },3000);
+  },[]);
+  
+  return (
+    <Fieldset title='useCallback'>
+      <MemoizedConst num={num}/>
+    </Fieldset>
+  );
+};
+
+// [1,2,3]
+// dely 3000ms
+// [3,4,5]
 ```
 
-## useMemo
+> 保存事件，让组件不会重复创建新方法，当你重复点击时，InputComponentState的handleClick的事件总是由组件新创建的。而InputComponentCallback的handleClick会被记忆下来，不会新创建。有利于提高性能。
 
 ```
-TODO
+let InputComponentStateFunc = null;
+function InputComponentState(){
+  const [state,setState] = useState(0);
+  function handleClick(){
+    setState(state=> state+1);
+  };
+  
+  console.group('InputComponentStateFunc');
+    console.log(InputComponentStateFunc === handleClick);
+  console.groupEnd();
+
+  InputComponentStateFunc = handleClick;
+
+  return (
+    <Fieldset title='InputComponentState'>
+      <input type='button' value={state} onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+
+let InputComponentCallbackFunc = null;
+function InputComponentCallback(){
+  const [state,setState] = useState(0);
+  const handleClick = useCallback((event) => {
+    setState(state=> state+1);
+    event.persist();
+  },[]);
+  
+  console.group('InputComponentCallbackFunc');
+    console.log(InputComponentCallbackFunc === handleClick);
+  console.groupEnd();
+  
+  InputComponentCallbackFunc = handleClick;
+
+  return (
+    <Fieldset title='InputComponentCallback'>
+      {}
+      <input type='button' value={state} onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+
+function UseCallbackComponent (){
+  return (
+    <Fieldset title='useCallback'>
+      <InputComponentState />
+      <InputComponentCallback />
+    </Fieldset>
+  );
+};
 ```
 
-## useRef
+## useMemo(function,[])
+> 和useCallback基本一致，我还没发现有什么区别Q。Q
 
 ```
-TODO
+function MemoizedLet({num}){
+  const memo = useMemo(()=> num,[]);
+
+  return (
+    <Fieldset title='MemoizedLet'>
+      <p>记忆 num > {memo}</p>
+      <p>原始 num > {num}</p>
+    </Fieldset>
+  )
+};
+
+function MemoizedConst({num}){
+  const memo = useMemo(()=> num,[num]);
+
+  return (
+    <Fieldset title='MemoizedConst'>
+      <p>记忆 num > {memo}</p>
+      <p>原始 num > {num}</p>
+    </Fieldset>
+  )
+};
+
+function useMemoComponent(){
+  const [num,setNum] = useState([1,2,3]);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setNum([3,4,5]);
+    },3000);
+  },[]);
+
+  return (
+    <Fieldset title='useMemoComponent'>
+      <MemoizedLet num={num} />
+      <MemoizedConst num={num}/>
+    </Fieldset>
+  )
+};
 ```
 
-## useImperativeMethods
+## useRef()
+
+> 返回一个ref对象，这个对象将维持在组件的整个生命周期
 
 ```
-TODO
+function useRefComponent(){
+  const inputEl = useRef(null);
+  
+  function handleClick(){
+    inputEl.current.focus();
+  }
+  return(
+    <Fieldset title='useRef'>
+      <input type='input' placeholder='useRef' ref={inputEl} />
+      <input type='button' value='获取焦点' onClick={handleClick} />
+    </Fieldset>
+  )
+};
 ```
 
+## useImperativeMethods(ref,()=>({}))
+
+> 向父组件公开ref实例
+> 只能应用于forwardRef(props,ref)
+
+```
+function FancyInput(props,ref){
+  const inputRef = useRef(null);
+  useImperativeMethods(ref,()=>({
+    focus: ()=>{
+      inputRef.current.focus();
+    }
+  }));
+
+  return <input type='input' placeholder='useRef' ref={inputRef}/>
+};
+
+const Input = forwardRef(FancyInput);
+
+function UseImperativeMethodsComponent(){
+  const fancyInputRef = useRef(null);
+  function handleClick(){
+    fancyInputRef.current.focus();
+  };
+
+  return (
+    <Fieldset title='UseImperativeMethods'>
+      <Input ref={fancyInputRef}/>
+      <input type='button' value='获取焦点' onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+```
+
+## useMutationEffect(function,[])
+
+> 和useEffect、useLayoutEffect类似
+> useMutationEffect会在更新阶段触发
+
+```
+function Effect(){
+  const [state,setState] = useState('请看log')
+  useEffect(()=>{
+    setTimeout(()=>{
+      console.log('useEffect');
+    });
+  },[]);
+
+  useLayoutEffect(()=>{
+    setTimeout(()=>{
+      console.log('useLayoutEffect');
+    });
+  },[]);
+
+  useMutationEffect(()=>{
+    setTimeout(()=>{
+      console.log('useMutationEffect');
+    });
+  },[]);
+
+  return (
+    <React.Fragment>
+      {state}
+    </React.Fragment>
+  )
+}
+
+function useMutationEffectComponent(){
+  const [show,setShow] = useState(false);
+  return (
+    <Fieldset title='useMutationEffect'>
+      { show && <Effect />}
+      <input type='button' value='show' onClick={()=>setShow(!show)}/>
+    </Fieldset>
+  )
+};
+```
 
