@@ -141,7 +141,7 @@ componentDidUpdate()
 setState()
 
 ```text
-getDerivedStateFromProps()
+static getDerivedStateFromProps()
 shouldComponentUpdate()
 render()
 getSnapshotBeforeUpdate()
@@ -391,6 +391,7 @@ A.defaultPorps = {
 }
 ```
 
+## React.lazy
 
 # HOC 高级组件
 
@@ -1047,4 +1048,6 @@ function useMutationEffectComponent(){
   )
 };
 ```
+
+# create-react-class 无ES6创建React Component
 
