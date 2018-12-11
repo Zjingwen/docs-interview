@@ -1,7 +1,5 @@
 [TOC]
 
-<div STYLE="page-break-after: always;"></div>
-
 # React的方法
 
 ![WechatIMG2006](https://lh3.googleusercontent.com/-jRhjzvFA3xI/W_uliAGt2wI/AAAAAAAAAF4/GbUq0TYYoagiQ2bhFq_GIQnako7FHnqkQCHMYCw/I/WechatIMG2006.png)
@@ -15,11 +13,10 @@ class A extends React.Component{
 	}
 }
 ```
+
 * 实例化对象
 * 继承React.Component
 * 初始化state
-
-<div STYLE="page-break-after: always;"></div>
 
 ### static getDerivedStateFromProps
 
@@ -30,10 +27,78 @@ class A extends React.Component{
 	}
 }
 ```
+
 * update更新时，render之前，dom渲染前
 * 必须有初始化state
 * 静态方法，没有this
 * 可以return出对象，设置state
+
+```
+class Count extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0,
+    }
+  };
+
+  static getDerivedStateFromProps(props){
+    return {count: props.count*2};
+  };
+
+  render(){
+    return (
+      <React.Fragment>
+        <p>Count-Child-state: {this.state.count}</p>
+        <p>Count-Child-props: {this.props.count}</p>
+      </React.Fragment>
+    )
+  }
+};
+
+class Time extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      time: this.props.time,
+    }
+  };
+
+  static getDerivedStateFromProps(props,state){
+    console.log(state);
+    return null;
+  };
+
+  handleClick(){
+    this.setState({
+      time: new Date().toString()
+    });
+  }
+
+  render(){
+    const {time} = this.state;
+    return(
+      <React.Fragment>
+        <input type='button' value='setState触发 详情看log' onClick={()=>this.handleClick()}/> 
+        <p>{time}</p>
+      </React.Fragment>
+    )
+  };
+};
+
+function GetDerivedStateFromPropsComponent (){
+  const [count,setCount] = useState(0);
+  const [time] = useState(new Date().toString());
+
+  return (
+    <Fieldset title='getDerivedStateFromProps'>
+      <input type='button' value='new props ++' onClick={()=>setCount(s=>s+1)}/>
+      <Count count={count}/>
+      <Time time={time}/>
+    </Fieldset>
+  )
+};
+```
 
 ### shouldComponentUpdate
 
@@ -44,9 +109,45 @@ class A extends React.Component{
 	}
 }
 ```
+
 * update更新时，render之前，dom渲染前
 * return 一个布尔值来判断是否渲染
 * 默认return true
+
+```
+class Time extends Component{
+  shouldComponentUpdate(nextPorps){
+    if(this.props.time !== nextPorps.time){
+      // 保证每次time不同时更新
+      console.group('shouldComponent-props');
+      console.log(nextPorps);
+      console.log(this.props);
+      console.groupEnd();
+      return true;
+    }
+    return false;
+  };
+  
+  render(){
+    return(
+      <React.Fragment>
+        {this.props.time}
+      </React.Fragment>
+    )
+  }
+};
+
+function ShuldComponentUpdateComponent() {
+  const [time,setTime] = useState(new Date().toString());
+
+  return(
+    <Fieldset title='shuldComponentUpdate'>
+      <input type='button' value='new Props' onClick={()=>setTime(new Date().toString())} />
+      <Time time={time}/>
+    </Fieldset>
+  )
+};
+```
 
 ### render
 
@@ -59,7 +160,7 @@ class A extends React.Component{
 ```
 * 将jsx渲染为真实DOM
 
-<div STYLE="page-break-after: always;"></div>
+
 
 ### getShapshotBeforeUpdate
 
@@ -97,7 +198,7 @@ class A extends React.Component{
 * update更新时，render之后，dom渲染后
 * snapshot为getShapshotBeforeUpdate的return
 
-<div STYLE="page-break-after: always;"></div>
+
 
 ### componentWillUnmount
 
@@ -126,11 +227,58 @@ render()
 componentDidMount()
 ```
 
+```
+class Flow extends React.Component{
+  constructor(){
+    super();
+    this.state = {};
+    console.group('初始化阶段');
+    console.log('constructor');
+  };
+
+  static getDerivedStateFromProps(){
+    console.log('getDerivedStateFromProps');
+    return null;
+  };
+
+  componentDidMount(){
+    console.log('componentDidMount');
+    console.groupEnd();
+  }
+  
+  render(){
+    console.log('render');
+    return (
+      <p>
+        constructor<br/>
+        |<br/>
+        static getDerivedStateFromProps()<br/>
+        |<br/>
+        render<br/>
+        |<br/>
+        componentDidMount<br/>
+      </p>
+    )
+  };
+}
+
+
+function MountingComponent (){
+  const [show,setShow] = useState(false);
+
+  return (
+    <Fieldset title='初始化阶段'>
+      <input type='button' value='查看初始化阶段，详情看log' onClick={()=>setShow(!show)}/>
+      {show && <Flow/>}
+    </Fieldset>
+  )
+};
+```
 
 ### 属性更新
  New Props
 
-```text
+```
 static getDerivedStateFromProps(props,state)
 shouldComponentUpdate(nextProps, nextState)
 render()
@@ -138,16 +286,128 @@ getSnapshotBeforeUpdate(prevProps,prevState)
 componentDidUpdate()
 ```
 
+```
+class Flow extends React.Component{
+  state = {};
+
+  static getDerivedStateFromProps(){
+    console.group('触发传递新的props');
+    console.log('getDevivedStateFromProps');
+    return null;
+  };
+
+  shouldComponentUpdate(){
+    console.log('shouldComponentUpdate');
+    return true;
+  };
+
+  getSnapshotBeforeUpdate(){
+    console.log('getSnapshotBeforeUpdate');
+    return null;
+  };
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate');
+    console.groupEnd();
+  };
+
+  render(){
+    console.log('render');
+    return(
+      <React.Fragment>
+        <p>{this.props.title}</p>
+        <p>
+          static getDevivedStateFromPorps <br/>
+          | <br/>
+          shouldComponentUpdate <br/>
+          | <br/>
+          getSnapshotBeforeUpdate <br/>
+          | <br/>
+          componentDidUpdate
+        </p>
+      </React.Fragment>
+    )
+  }
+};
+
+function NewpropsComponent(){
+  const [time,setTime] = useState(new Date().toString());
+
+  return (
+    <Fieldset title='传递新的props'>
+      <input type='button' value='触发传递新的props' onClick={()=>setTime(new Date().toString())}/>
+      <Flow title={time}/>
+    </Fieldset>
+  )
+};
+
+export default NewpropsComponent;
+```
+
 setState()
 
-```text
+```
 static getDerivedStateFromProps()
 shouldComponentUpdate()
 render()
 getSnapshotBeforeUpdate()
 componentDidUpdate()
 ```
-<div STYLE="page-break-after: always;"></div>
+
+```
+class SetStateComponent extends React.Component{
+  state = {
+    time: new Date().toString(),
+  };
+  
+  static getDerivedStateFromProps(){
+    console.group('设置属性');
+    console.log('getDerivedStateFromProps');
+    return null;
+  };
+
+  shouldComponentUpdate(){
+    console.log('shouldComponentUpdate')
+    return true;
+  };
+
+  getSnapshotBeforeUpdate(){
+    console.log('getSnapshotBeforeUpdate');
+    return null;
+  };
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate');
+    console.groupEnd();
+  };
+
+  handleClick(){
+    this.setState({
+      time: new Date().toString()
+    });
+  }
+
+  render(){
+    console.log('render');
+    return (
+      <Fieldset title='设置属性'>
+        <input type='button' value='更新时间' onClick={()=>this.handleClick()} />
+        <p>{this.state.time}</p>
+        static getDerivedStateFromProps <br />
+        | <br />
+        shouldComponentUpdate <br />
+        | <br />
+        render <br />
+        | <br />
+        getSnapshotBeforeUpdate <br />
+        | <br />
+        componentDidUpdate <br />
+      </Fieldset>
+    )
+  }
+}
+```
+
 
 forceUpdate()
 
@@ -158,7 +418,41 @@ getShapshotBeforeUpdate()
 componentDidUpdate()
 ```
 
-<div STYLE="page-break-after: always;"></div>
+```
+class ForceUpdateComponent extends React.Component{
+  state = {};
+
+  static getDerivedStateFromProps(){
+    console.group('forecUpdate更新');
+    console.log('getDerivedStateFromProps');
+    return true;
+  };
+
+  getSnapshotBeforeUpdate(){
+    console.log('getShapshotBeforeUpdate');
+    return null;
+  };
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate');
+    console.groupEnd();
+  }
+
+  render(){
+    console.log('render')
+    return(
+      <Fieldset title='forecUpdate更新'>
+        <input type='button' value='触发forecUpdae' onClick={()=>this.forceUpdate()} /> <br/>
+        static getDerivedStateFromProps <br/>
+        | <br/>
+        getShapshotBeforeUpdate <br/>
+        | <br/>
+        componentDidUpdate <br/>
+      </Fieldset>
+    )
+  }
+}
+```
 
 ## 触发生命周期的api
 
@@ -195,7 +489,7 @@ this.forceUpage(()=>{
 * 触发一轮生命周期`getDerivedStateFromProps->render->componentDidUpdate`
 * callback，为生命周期之后调用
 
-<div STYLE="page-break-after: always;"></div>
+
 
 ## React.Component
 * react的抽象基础类
@@ -224,7 +518,7 @@ const A = React.memo((props)=>{
     return null |  true | false
 })
 ```
-<div STYLE="page-break-after: always;"></div>
+
 ## React.createRef
 * 创建节点引用
 * 通过ref属性附加到React元素
@@ -368,6 +662,12 @@ class C extends React.Component {
 React.forwordRef(props,ref)
 ```
 
+## React.lazy
+
+```
+TODO
+```
+
 ## defaultProps
 
 * 设置props的默认值
@@ -390,8 +690,6 @@ A.defaultPorps = {
     test: 'test',
 }
 ```
-
-## React.lazy
 
 # HOC 高级组件
 
@@ -1049,5 +1347,9 @@ function useMutationEffectComponent(){
 };
 ```
 
-# create-react-class 无ES6创建React Component
+# 无ES6创建React Component
+
+```
+# create-react-class
+```
 
