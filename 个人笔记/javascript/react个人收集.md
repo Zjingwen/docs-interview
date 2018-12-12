@@ -174,9 +174,62 @@ class A extends React.Component{
 	}
 }
 ```
+
 * update更新时，render之前，dom渲染前
 * 无默认返回值，可返回null
 * return 一个值，用来作为componentDidUpdate的第三个参数
+
+```
+class Child extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...props,
+    };
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.group('getSnapshotBeforeUpdate');
+    console.log(prevProps);
+    console.log(prevState);
+    console.groupEnd();
+    if (prevProps.time !== prevState.time) {
+      this.setState({
+        time: prevProps.time,
+      });
+    }
+    return 'getSnapshotBeforeUpdate';
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.group('componentDidUpdate');
+    console.log(prevProps);
+    console.log(prevState);
+    console.log(snapshot);
+    console.groupEnd();
+  }
+
+  render() {
+    return (
+      <p>
+        {this.state.time}
+      </p>
+    );
+  }
+}
+
+function GetShapshotBeforeUpdateComponent() {
+  const [time, setTime] = useState(new Date().toString());
+
+  return (
+    <Fieldset title='getShapshotBeforeUpdate'>
+      <Child time={time} />
+      <input type='button' value='更新时间' onClick={()=>setTime(new Date().toString())} />
+    </Fieldset>
+  );
+}
+```
+
 
 ### componentDidMount
 
@@ -185,8 +238,33 @@ class A extends React.Component{
 	componentDidMount(){}
 }
 ```
+
 * render之后，dom渲染后
 * 唯一的会在服务端渲染调起的生命周期钩子函数。
+
+```
+class Time extends Component {
+  componentDidMount() {
+    console.log('ComponentDidMount');
+  }
+
+  render() {
+    return (
+      <p>{new Date().toString()}</p>
+    );
+  }
+}
+
+function ComponentDidMountComponent() {
+  const [show, setShow] = useState(false);
+  return (
+    <Fieldset title='componentDidMount'>
+      <input type='button' value='触发componentDidMount' onClick={()=>setShow(!show)} />
+      { show && <Time />}
+    </Fieldset>
+  );
+}
+```
 
 ### componentDidUpdate
 
@@ -195,10 +273,9 @@ class A extends React.Component{
 	componentDidUpdate(prevProps,prevState,snapshot){}
 }
 ```
+
 * update更新时，render之后，dom渲染后
 * snapshot为getShapshotBeforeUpdate的return
-
-
 
 ### componentWillUnmount
 
@@ -209,11 +286,35 @@ class A extends React.Component{
 ```
 * dom卸载
 
+```
+class Time extends Component {
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+  render() {
+    return (
+      <p>{new Date().toString()}</p>
+    );
+  };
+}
+
+function ComponentWillUnmountComponent() {
+  const [show, setShow] = useState(true);
+  return (
+    <Fieldset title='componentWillUnmount'>
+      <input type='button' value='触发componentWillUnmount' onClick={()=> setShow(!show)} />
+      {show && <Time />}
+    </Fieldset>
+  );
+}
+```
+
 ### componentDidCatch
 
 ```
 TODO
 ```
+
 * 为什么不用try/catch
 
 ## 触发流程
