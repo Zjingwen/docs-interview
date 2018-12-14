@@ -312,10 +312,74 @@ function ComponentWillUnmountComponent() {
 ### componentDidCatch
 
 ```
-TODO
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      error: false,
+      errorInfo: null,
+    };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.log(errorInfo.componentStack);
+    this.setState({
+      error: error.toString(),
+      errorInfo: errorInfo.componentStack,
+    });
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <div>
+          <h1>error: {this.state.error}</h1>
+          <p>
+            errorInfo:{this.state.errorInfo}
+          </p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+};
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+class Input extends Component {
+  constructor() {
+    super();
+    this.state= {
+      throw: false,
+    };
+  }
+
+  handleClick() {
+    this.setState((s)=>({
+      throw: !s.throws,
+    }));
+  }
+
+  render() {
+    if (this.state.throw) throw new Error('I throw');
+    return <input type='button' value='触发catch' onClick={()=> this.handleClick()} />;
+  }
+};
+
+function ComponentDidCatchComponent() {
+  return (
+    <Fieldset title='componentDidCatch'>
+      <ErrorBoundary>
+        <Input />
+      </ErrorBoundary>
+    </Fieldset>
+  );
+};
 ```
 
-* 为什么不用try/catch
+* 只有在render中报错才会被捕获
+* 为什么不用try/catch：try/catch更加适合命令式代码，而componentDidCatch会捕获组件树中的报错
 
 ## 触发流程
 
