@@ -277,6 +277,10 @@ class A extends React.Component{
 * update更新时，render之后，dom渲染后
 * snapshot为getShapshotBeforeUpdate的return
 
+```
+参照getShapshotBeforeUpdate的code demo
+```
+
 ### componentWillUnmount
 
 ```javascript
@@ -310,6 +314,15 @@ function ComponentWillUnmountComponent() {
 ```
 
 ### componentDidCatch
+
+```
+class A extends React.Component{
+    componentDidCatch(error,errorInfo){}
+}
+```
+
+* 只有在render中报错才会被捕获
+* 为什么不用try/catch：try/catch更加适合命令式代码，而componentDidCatch会捕获组件树中的报错
 
 ```
 class ErrorBoundary extends Component {
@@ -378,14 +391,11 @@ function ComponentDidCatchComponent() {
 };
 ```
 
-* 只有在render中报错才会被捕获
-* 为什么不用try/catch：try/catch更加适合命令式代码，而componentDidCatch会捕获组件树中的报错
-
 ## 触发流程
 
 ### 初始化 
 
-```text
+```
 constructor()
 static getDerivedStateFromProps(props,state)
 render()
@@ -576,7 +586,7 @@ class SetStateComponent extends React.Component{
 
 forceUpdate()
 
-```text
+```
 getDerivedStateFromProps()
 render()
 getShapshotBeforeUpdate()
@@ -622,12 +632,15 @@ class ForceUpdateComponent extends React.Component{
 ## 触发生命周期的api
 
 ### setState 设置状态
-setState((prevState)=>({object}),function callback])
+
+```
+setState((State)=>({object}),function callback])
+```
 
 ```
 // 完全写法
-this.setState(prevState=>({
-    ...prevState
+this.setState(State=>({
+    ...State
 }),()=>{
     ...
 })
@@ -643,7 +656,10 @@ this.setState({
 * callback，为状态设置之后，state经过所有生命周期后调用
 
 ### forceUpage 强制更新
+
+```
 forceUpage(function callback)
+```
 
 ```
 this.forceUpage(()=>{
@@ -654,9 +670,8 @@ this.forceUpage(()=>{
 * 触发一轮生命周期`getDerivedStateFromProps->render->componentDidUpdate`
 * callback，为生命周期之后调用
 
-
-
 ## React.Component
+
 * react的抽象基础类
 
 ```
@@ -664,6 +679,7 @@ class A extends React.Component{}
 ```
 
 ## React.PureComponent
+
 * 内置一个浅比较，比较props和state，决定是否render，用于提高性能
 * 只是进行浅对比，无法对比复合数据
 * 用于避免无状态组件的重复渲染
@@ -673,6 +689,7 @@ class A extends React.Component{}
 ```
 
 ## React.memo
+
 * 和React.PureComponent类似功能一直，但这是一个纯函数用法
 * 只是进行浅对比，无法对比复合数据
 
@@ -685,6 +702,7 @@ const A = React.memo((props)=>{
 ```
 
 ## React.createRef
+
 * 创建节点引用
 * 通过ref属性附加到React元素
 * 可以通过curent访问到节点
@@ -707,6 +725,7 @@ class A extends React.Component{
 ```
 
 ## React.isValidElement
+
 * 验证对象是否为React元素。返回true或false。
 
 ```
@@ -804,6 +823,7 @@ React.createFactory(type)
 ```
 
 ## React.cloneElement
+
 * 克隆并返回一个新的React元素
 
 ```
@@ -833,6 +853,18 @@ React.forwordRef(props,ref)
 TODO
 ```
 
+## React.StrictMode
+
+```
+TODO
+```
+
+## React.context
+
+```
+TODO
+```
+
 ## defaultProps
 
 * 设置props的默认值
@@ -856,11 +888,498 @@ A.defaultPorps = {
 }
 ```
 
+## PropTypes
+
+```
+TODO
+```
+
+# ReactDOM.createPortal
+
+```
+ReactDOM.createPortal(
+    React.Component | JSX, // react组件
+    element,// 节点元素
+);
+```
+
+# Render Props
+
+```
+TODO
+```
+
+# React的事件池
+
+```
+TODO
+```
+
+# Hooks
+
+## useState 状态钩
+
+* 用来设置和更新状态
+
+```
+const [状态变量,更新函数] = useState(默认值)
+```
+
+```
+function A(){
+  const [count, setCount] = useState(0);
+
+  return(
+    <React.Fragment>
+      <p>Count: {count}</p>
+      <button onClick={()=>{setCount(count+1)}}>++</button>
+      <button onClick={()=>{setCount(count-1)}}>--</button>
+    </React.Fragment>
+  )
+};
+```
+
+## useEffect(function,[]) 效果钩
+
+```
+useEffect(()=>{
+    // componentDidMount
+    // componentDidUpdate
+    return ()=>{
+        // componentWillUnmount
+    }
+},[]);
+```
+
+* useEffect是componentDidMount、componentDidUpdate、componentWillUnmount的结合。
+* 默认情况下，useEffect，会在每次componentDidMount、componentDidUpdate时执行。
+* 可以拿到DOM结构
+
+```
+function A(){
+  const [count,setCount] = useState(0)
+
+  useEffect(()=>{
+    document.getElementById('useEffect-A-count').innerText = `count: ${count}`;
+  });
+
+  function handleClick(){
+    setCount(count+1);
+  };
+
+  return (
+    <Fieldset title='useEffect-简单状态'>
+      <p id='useEffect-A-count'></p>
+      <input type='button' value='更新' onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+```
+
+* 如何在组件compoenntWillUnmount时触发useEffect
+
+```
+function B(){
+  const [show,setShow] = useState(true);
+  function Child(){
+    useEffect(()=>{
+      console.log('componentDidMount');
+      return ()=>{
+        console.log('componentWillUnmount');
+      }
+    })
+    return <p>B-Child</p>
+  };
+
+  return (
+    <Fieldset title='useEffect-在componentWillUnmunt时触发'>
+      <p>请查看log</p>
+      <input type='button' value='show' onClick={()=>setShow(!show)}/>
+      {show && <Child/>}
+    </Fieldset>
+  )
+};
+```
+
+* 利用第二个参数，让useEffect不会过度渲染
+* 为空数组，表示不依赖props或者state，将不会更新
+* 数组内表示当新的赋值，如果新值和旧值不想等，就更新
+
+```
+function D(){
+  const [count,setCount] = useState(0);
+  const [double,setDouble] = useState(count*2);
+  const [three,setThree] = useState(count*3);
+  
+  useEffect(()=>{
+    setDouble(count*2);
+  },[count*2])
+
+  useEffect(()=>{
+    setThree(count);
+  },[])// 为空数组，表示不依赖props或者state，将不会更新
+
+  return (
+    <Fieldset title='userEffect-利用第二个参数跳过效果优化'>
+      <p>+1: {count}</p>
+      <p>*2: {double}</p>
+      <p>not: {three}</p>
+      <input type='button' value='click' onClick={()=>setCount(count+1)}/>
+    </Fieldset>
+  )
+};
+```
+
+## useLayoutEffect(function,[])
+
+* DOM渲染前反应的钩子
+* 基本配置和useEffect一致
+
+```
+function E(){
+  const [name,setName] = useState(null);
+  useLayoutEffect(()=>{
+    setTimeout(()=>{
+      setName('useLayoutEffect');
+    },3000);
+  },[]);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setName('useEffect');
+    },3000);
+  },[]);
+
+  return(
+    <Fieldset title='useLayoutEffecth和useEffect的区别'>
+      <span id='e-useEffect'>{name}</span>
+    </Fieldset>
+  )
+}
+```
+
+## useContext(createContext)
+
+* 参数在所有子组件中都能获取
+
+```
+const CountContext = createContext();
+function F(){
+  function ChildA(){
+    const countChild = useContext(CountContext);
+    return (
+      <p>
+        Child A count: {countChild}
+      </p>
+    )
+  };
+
+  function ChildB(){
+    const countChild = useContext(CountContext);
+    return (
+      <p>
+        Child B count: {countChild}
+      </p>
+    )
+  };
+
+  const [count,setCount] = useState(0);
+
+  return (
+    <Fieldset title='useContext'>
+      <CountContext.Provider value={count}>
+        <ChildA />
+        <ChildB />
+      </CountContext.Provider>
+      <input type='button' value='++' onClick={()=>setCount(count+1)}/>
+    </Fieldset>
+  )
+}
+```
+
+## useReducer(reducer,initialState)
+
+* 类似redux的功能
+
+```
+const [state,dispatch] = useReducer(reducer,initialState,{action});
+// const [属性,动作] = useReducer(动作函数,初始值属性,初始动作);
+// 如何触发：dispatch(type);
+```
+
+```
+function reducer(state,action){
+  switch(action){
+    case 'reset':
+      return 0;
+      break;
+    case 'increment':
+      return state+1;
+      break;
+    case 'decrement':
+      return state-1;
+      break;
+    default:
+      return state;
+  };
+};
+
+function useReduceComponent(){
+  const [state,dispatch] = useReducer(reducer,0,'reset');
+
+  return (
+    <Fieldset title='useReduce'>
+      <p>{state}</p>
+      <input type='button' value='++' onClick={()=>dispatch('increment')}/>
+      <input type='button' value='--' onClick={()=>dispatch('decrement')}/>
+      <input type='button' value='reset' onClick={()=>dispatch('reset')}/>
+    </Fieldset>
+  );
+};
+```
+
+## useCallback(()=>{},[])
+
+* 返回一个记忆的memoized，默认情况下会记录上一次传递的值
+* 可以替代shouldComponentUpdate使用
+
+```
+function MemoizedConst ({num}){
+  const memoizedCallback = useCallback(()=>{
+    return num;
+  },[]);
+
+  return (
+    <Fieldset title='MemoizedConst'>
+      <p>记忆 num > {memoizedCallback()}</p>
+      <p>原始 num > {num}</p>
+    </Fieldset>
+  )
+};
+
+function UseCallbackComponent (){
+  let [num,setNum] = useState([1,2,3]);
+  useEffect(()=>{
+    setTimeout(function(){
+      setNum([3,4,5])
+    },3000);
+  },[]);
+  
+  return (
+    <Fieldset title='useCallback'>
+      <MemoizedConst num={num}/>
+    </Fieldset>
+  );
+};
+
+// [1,2,3]
+// dely 3000ms
+// [3,4,5]
+```
+
+* 保存事件，让组件不会重复创建新方法，当你重复点击时，InputComponentState的handleClick的事件总是由组件新创建的。而InputComponentCallback的handleClick会被记忆下来，不会新创建。有利于提高性能。
+
+```
+let InputComponentStateFunc = null;
+function InputComponentState(){
+  const [state,setState] = useState(0);
+  function handleClick(){
+    setState(state=> state+1);
+  };
+  
+  console.group('InputComponentStateFunc');
+    console.log(InputComponentStateFunc === handleClick);
+  console.groupEnd();
+
+  InputComponentStateFunc = handleClick;
+
+  return (
+    <Fieldset title='InputComponentState'>
+      <input type='button' value={state} onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+
+let InputComponentCallbackFunc = null;
+function InputComponentCallback(){
+  const [state,setState] = useState(0);
+  const handleClick = useCallback((event) => {
+    setState(state=> state+1);
+    event.persist();
+  },[]);
+  
+  console.group('InputComponentCallbackFunc');
+    console.log(InputComponentCallbackFunc === handleClick);
+  console.groupEnd();
+  
+  InputComponentCallbackFunc = handleClick;
+
+  return (
+    <Fieldset title='InputComponentCallback'>
+      {}
+      <input type='button' value={state} onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+
+function UseCallbackComponent (){
+  return (
+    <Fieldset title='useCallback'>
+      <InputComponentState />
+      <InputComponentCallback />
+    </Fieldset>
+  );
+};
+```
+
+## useMemo(function,[])
+
+* 和useCallback基本一致，我还没发现有什么区别Q。Q
+
+```
+function MemoizedLet({num}){
+  const memo = useMemo(()=> num,[]);
+
+  return (
+    <Fieldset title='MemoizedLet'>
+      <p>记忆 num > {memo}</p>
+      <p>原始 num > {num}</p>
+    </Fieldset>
+  )
+};
+
+function MemoizedConst({num}){
+  const memo = useMemo(()=> num,[num]);
+
+  return (
+    <Fieldset title='MemoizedConst'>
+      <p>记忆 num > {memo}</p>
+      <p>原始 num > {num}</p>
+    </Fieldset>
+  )
+};
+
+function useMemoComponent(){
+  const [num,setNum] = useState([1,2,3]);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setNum([3,4,5]);
+    },3000);
+  },[]);
+
+  return (
+    <Fieldset title='useMemoComponent'>
+      <MemoizedLet num={num} />
+      <MemoizedConst num={num}/>
+    </Fieldset>
+  )
+};
+```
+
+## useRef()
+
+* 返回一个ref对象，这个对象将维持在组件的整个生命周期
+
+```
+function useRefComponent(){
+  const inputEl = useRef(null);
+  
+  function handleClick(){
+    inputEl.current.focus();
+  }
+  return(
+    <Fieldset title='useRef'>
+      <input type='input' placeholder='useRef' ref={inputEl} />
+      <input type='button' value='获取焦点' onClick={handleClick} />
+    </Fieldset>
+  )
+};
+```
+
+## useImperativeMethods(ref,()=>({}))
+
+* 向父组件公开ref实例
+* 只能应用于forwardRef(props,ref)
+
+```
+function FancyInput(props,ref){
+  const inputRef = useRef(null);
+  useImperativeMethods(ref,()=>({
+    focus: ()=>{
+      inputRef.current.focus();
+    }
+  }));
+
+  return <input type='input' placeholder='useRef' ref={inputRef}/>
+};
+
+const Input = forwardRef(FancyInput);
+
+function UseImperativeMethodsComponent(){
+  const fancyInputRef = useRef(null);
+  function handleClick(){
+    fancyInputRef.current.focus();
+  };
+
+  return (
+    <Fieldset title='UseImperativeMethods'>
+      <Input ref={fancyInputRef}/>
+      <input type='button' value='获取焦点' onClick={handleClick}/>
+    </Fieldset>
+  )
+};
+```
+
+## useMutationEffect(function,[])
+
+* 和useEffect、useLayoutEffect类似
+* useMutationEffect会在更新阶段触发
+
+```
+function Effect(){
+  const [state,setState] = useState('请看log')
+  useEffect(()=>{
+    setTimeout(()=>{
+      console.log('useEffect');
+    });
+  },[]);
+
+  useLayoutEffect(()=>{
+    setTimeout(()=>{
+      console.log('useLayoutEffect');
+    });
+  },[]);
+
+  useMutationEffect(()=>{
+    setTimeout(()=>{
+      console.log('useMutationEffect');
+    });
+  },[]);
+
+  return (
+    <React.Fragment>
+      {state}
+    </React.Fragment>
+  )
+}
+
+function useMutationEffectComponent(){
+  const [show,setShow] = useState(false);
+  return (
+    <Fieldset title='useMutationEffect'>
+      { show && <Effect />}
+      <input type='button' value='show' onClick={()=>setShow(!show)}/>
+    </Fieldset>
+  )
+};
+```
+
+
 # HOC 高级组件
 
 解释
 
-* 一个参数为React组件的函数，并且返回一个新函数。一个类工厂
+* 一个参数为React组件的函数，并且返回一个新函数，一个类工厂。
 
 优点
 
@@ -1019,502 +1538,26 @@ TODO
 TODO
 ```
 
-# Context
-
-```
-TODO
-```
-
-# ReactDOM.createPortal
-
-```
-ReactDOM.createPortal(
-    React.Component | JSX, // react组件
-    element,// 节点元素
-);
-```
-
-# Render Props
-
-```
-TODO
-```
-
-# React.StrictMode
-
-```
-TODO
-```
-
-# React的事件池
-
-```
-TODO
-```
-
-# Hooks
-
-## useState 状态钩
-
-> 用来设置和更新状态
-
-```
-const [状态变量,更新函数] = useState(默认值)
-```
-
-```
-function A(){
-  const [count, setCount] = useState(0);
-
-  return(
-    <React.Fragment>
-      <p>Count: {count}</p>
-      <button onClick={()=>{setCount(count+1)}}>++</button>
-      <button onClick={()=>{setCount(count-1)}}>--</button>
-    </React.Fragment>
-  )
-};
-```
-
-## useEffect(function,[]) 效果钩
-
-> 基本格式
-
-```
-useEffect(()=>{
-    // componentDidMount
-    // componentDidUpdate
-    return ()=>{
-        // componentWillUnmount
-    }
-},[]);
-```
-
-> useEffect是componentDidMount、componentDidUpdate、componentWillUnmount的结合。
-> 默认情况下，useEffect，会在每次componentDidMount、componentDidUpdate时执行。
-> 可以拿到DOM结构
-
-```
-function A(){
-  const [count,setCount] = useState(0)
-
-  useEffect(()=>{
-    document.getElementById('useEffect-A-count').innerText = `count: ${count}`;
-  });
-
-  function handleClick(){
-    setCount(count+1);
-  };
-
-  return (
-    <Fieldset title='useEffect-简单状态'>
-      <p id='useEffect-A-count'></p>
-      <input type='button' value='更新' onClick={handleClick}/>
-    </Fieldset>
-  )
-};
-```
-
-> 如何在组件compoenntWillUnmount时触发useEffect
-
-```
-function B(){
-  const [show,setShow] = useState(true);
-  function Child(){
-    useEffect(()=>{
-      console.log('componentDidMount');
-      return ()=>{
-        console.log('componentWillUnmount');
-      }
-    })
-    return <p>B-Child</p>
-  };
-
-  return (
-    <Fieldset title='useEffect-在componentWillUnmunt时触发'>
-      <p>请查看log</p>
-      <input type='button' value='show' onClick={()=>setShow(!show)}/>
-      {show && <Child/>}
-    </Fieldset>
-  )
-};
-```
-
-> 利用第二个参数，让useEffect不会过度渲染
-> 为空数组，表示不依赖props或者state，将不会更新
-> 数组内表示当新的赋值，如果新值和旧值不想等，就更新
-
-```
-function D(){
-  const [count,setCount] = useState(0);
-  const [double,setDouble] = useState(count*2);
-  const [three,setThree] = useState(count*3);
-  
-  useEffect(()=>{
-    setDouble(count*2);
-  },[count*2])
-
-  useEffect(()=>{
-    setThree(count);
-  },[])// 为空数组，表示不依赖props或者state，将不会更新
-
-  return (
-    <Fieldset title='userEffect-利用第二个参数跳过效果优化'>
-      <p>+1: {count}</p>
-      <p>*2: {double}</p>
-      <p>not: {three}</p>
-      <input type='button' value='click' onClick={()=>setCount(count+1)}/>
-    </Fieldset>
-  )
-};
-```
-
-## useLayoutEffect(function,[])
-
-> DOM渲染前反应的钩子
-> 基本配置和useEffect一致
-
-```
-function E(){
-  const [name,setName] = useState(null);
-  useLayoutEffect(()=>{
-    setTimeout(()=>{
-      setName('useLayoutEffect');
-    },3000);
-  },[]);
-  useEffect(()=>{
-    setTimeout(()=>{
-      setName('useEffect');
-    },3000);
-  },[]);
-
-  return(
-    <Fieldset title='useLayoutEffecth和useEffect的区别'>
-      <span id='e-useEffect'>{name}</span>
-    </Fieldset>
-  )
-}
-```
-
-## useContext(createContext)
-
-> 参数在所有子组件中都能获取
-
-```
-const CountContext = createContext();
-function F(){
-  function ChildA(){
-    const countChild = useContext(CountContext);
-    return (
-      <p>
-        Child A count: {countChild}
-      </p>
-    )
-  };
-
-  function ChildB(){
-    const countChild = useContext(CountContext);
-    return (
-      <p>
-        Child B count: {countChild}
-      </p>
-    )
-  };
-
-  const [count,setCount] = useState(0);
-
-  return (
-    <Fieldset title='useContext'>
-      <CountContext.Provider value={count}>
-        <ChildA />
-        <ChildB />
-      </CountContext.Provider>
-      <input type='button' value='++' onClick={()=>setCount(count+1)}/>
-    </Fieldset>
-  )
-}
-```
-
-## useReducer(reducer,initialState)
-
-> 类似redux的功能
-
-```
-const [state,dispatch] = useReducer(reducer,initialState,{action});
-// const [属性,动作] = useReducer(动作函数,初始值属性,初始动作);
-// 如何触发：dispatch(type);
-```
-
-```
-function reducer(state,action){
-  switch(action){
-    case 'reset':
-      return 0;
-      break;
-    case 'increment':
-      return state+1;
-      break;
-    case 'decrement':
-      return state-1;
-      break;
-    default:
-      return state;
-  };
-};
-
-function useReduceComponent(){
-  const [state,dispatch] = useReducer(reducer,0,'reset');
-
-  return (
-    <Fieldset title='useReduce'>
-      <p>{state}</p>
-      <input type='button' value='++' onClick={()=>dispatch('increment')}/>
-      <input type='button' value='--' onClick={()=>dispatch('decrement')}/>
-      <input type='button' value='reset' onClick={()=>dispatch('reset')}/>
-    </Fieldset>
-  );
-};
-```
-
-## useCallback(()=>{},[])
-
-> 返回一个记忆的memoized，默认情况下会记录上一次传递的值
-> 可以替代shouldComponentUpdate使用
-
-```
-function MemoizedConst ({num}){
-  const memoizedCallback = useCallback(()=>{
-    return num;
-  },[]);
-
-  return (
-    <Fieldset title='MemoizedConst'>
-      <p>记忆 num > {memoizedCallback()}</p>
-      <p>原始 num > {num}</p>
-    </Fieldset>
-  )
-};
-
-function UseCallbackComponent (){
-  let [num,setNum] = useState([1,2,3]);
-  useEffect(()=>{
-    setTimeout(function(){
-      setNum([3,4,5])
-    },3000);
-  },[]);
-  
-  return (
-    <Fieldset title='useCallback'>
-      <MemoizedConst num={num}/>
-    </Fieldset>
-  );
-};
-
-// [1,2,3]
-// dely 3000ms
-// [3,4,5]
-```
-
-> 保存事件，让组件不会重复创建新方法，当你重复点击时，InputComponentState的handleClick的事件总是由组件新创建的。而InputComponentCallback的handleClick会被记忆下来，不会新创建。有利于提高性能。
-
-```
-let InputComponentStateFunc = null;
-function InputComponentState(){
-  const [state,setState] = useState(0);
-  function handleClick(){
-    setState(state=> state+1);
-  };
-  
-  console.group('InputComponentStateFunc');
-    console.log(InputComponentStateFunc === handleClick);
-  console.groupEnd();
-
-  InputComponentStateFunc = handleClick;
-
-  return (
-    <Fieldset title='InputComponentState'>
-      <input type='button' value={state} onClick={handleClick}/>
-    </Fieldset>
-  )
-};
-
-let InputComponentCallbackFunc = null;
-function InputComponentCallback(){
-  const [state,setState] = useState(0);
-  const handleClick = useCallback((event) => {
-    setState(state=> state+1);
-    event.persist();
-  },[]);
-  
-  console.group('InputComponentCallbackFunc');
-    console.log(InputComponentCallbackFunc === handleClick);
-  console.groupEnd();
-  
-  InputComponentCallbackFunc = handleClick;
-
-  return (
-    <Fieldset title='InputComponentCallback'>
-      {}
-      <input type='button' value={state} onClick={handleClick}/>
-    </Fieldset>
-  )
-};
-
-function UseCallbackComponent (){
-  return (
-    <Fieldset title='useCallback'>
-      <InputComponentState />
-      <InputComponentCallback />
-    </Fieldset>
-  );
-};
-```
-
-## useMemo(function,[])
-> 和useCallback基本一致，我还没发现有什么区别Q。Q
-
-```
-function MemoizedLet({num}){
-  const memo = useMemo(()=> num,[]);
-
-  return (
-    <Fieldset title='MemoizedLet'>
-      <p>记忆 num > {memo}</p>
-      <p>原始 num > {num}</p>
-    </Fieldset>
-  )
-};
-
-function MemoizedConst({num}){
-  const memo = useMemo(()=> num,[num]);
-
-  return (
-    <Fieldset title='MemoizedConst'>
-      <p>记忆 num > {memo}</p>
-      <p>原始 num > {num}</p>
-    </Fieldset>
-  )
-};
-
-function useMemoComponent(){
-  const [num,setNum] = useState([1,2,3]);
-
-  useEffect(()=>{
-    setTimeout(()=>{
-      setNum([3,4,5]);
-    },3000);
-  },[]);
-
-  return (
-    <Fieldset title='useMemoComponent'>
-      <MemoizedLet num={num} />
-      <MemoizedConst num={num}/>
-    </Fieldset>
-  )
-};
-```
-
-## useRef()
-
-> 返回一个ref对象，这个对象将维持在组件的整个生命周期
-
-```
-function useRefComponent(){
-  const inputEl = useRef(null);
-  
-  function handleClick(){
-    inputEl.current.focus();
-  }
-  return(
-    <Fieldset title='useRef'>
-      <input type='input' placeholder='useRef' ref={inputEl} />
-      <input type='button' value='获取焦点' onClick={handleClick} />
-    </Fieldset>
-  )
-};
-```
-
-## useImperativeMethods(ref,()=>({}))
-
-> 向父组件公开ref实例
-> 只能应用于forwardRef(props,ref)
-
-```
-function FancyInput(props,ref){
-  const inputRef = useRef(null);
-  useImperativeMethods(ref,()=>({
-    focus: ()=>{
-      inputRef.current.focus();
-    }
-  }));
-
-  return <input type='input' placeholder='useRef' ref={inputRef}/>
-};
-
-const Input = forwardRef(FancyInput);
-
-function UseImperativeMethodsComponent(){
-  const fancyInputRef = useRef(null);
-  function handleClick(){
-    fancyInputRef.current.focus();
-  };
-
-  return (
-    <Fieldset title='UseImperativeMethods'>
-      <Input ref={fancyInputRef}/>
-      <input type='button' value='获取焦点' onClick={handleClick}/>
-    </Fieldset>
-  )
-};
-```
-
-## useMutationEffect(function,[])
-
-> 和useEffect、useLayoutEffect类似
-> useMutationEffect会在更新阶段触发
-
-```
-function Effect(){
-  const [state,setState] = useState('请看log')
-  useEffect(()=>{
-    setTimeout(()=>{
-      console.log('useEffect');
-    });
-  },[]);
-
-  useLayoutEffect(()=>{
-    setTimeout(()=>{
-      console.log('useLayoutEffect');
-    });
-  },[]);
-
-  useMutationEffect(()=>{
-    setTimeout(()=>{
-      console.log('useMutationEffect');
-    });
-  },[]);
-
-  return (
-    <React.Fragment>
-      {state}
-    </React.Fragment>
-  )
-}
-
-function useMutationEffectComponent(){
-  const [show,setShow] = useState(false);
-  return (
-    <Fieldset title='useMutationEffect'>
-      { show && <Effect />}
-      <input type='button' value='show' onClick={()=>setShow(!show)}/>
-    </Fieldset>
-  )
-};
-```
-
 # 无ES6创建React Component
 
+* create-react-class
+
 ```
-# create-react-class
+TODO
 ```
+
+# 动态引入 dynamic import
+
+* React Loadable 
+
+```
+TODO
+```
+
+# 受控制组件 or 非受控制组件
+
+```
+TODO
+```
+
 
