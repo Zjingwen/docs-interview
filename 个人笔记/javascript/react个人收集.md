@@ -688,20 +688,46 @@ class A extends React.Component{}
  class A extends React.PureComponent{}
 ```
 
-## React.memo
+## React.memo(()=>{},()=>{});
 
+* 组件仅在它的 props 发生改变的时候进行重新渲染
 * 和React.PureComponent类似功能一直，但这是一个纯函数用法
 * 只是进行浅对比，无法对比复合数据
 
 ```
 const A = React.memo((props)=>{
     return JSX
-},(prevState,prevProps)=>{
-    return null |  true | false
+},(prevProps,nextProps)=>{
+    return null | false
 })
 ```
 
-## React.createRef
+```
+const MemoComponent = React.memo((props)=>{
+  return (
+    <div>{props.time}</div>
+  );
+}, (prevProps, nextProps)=>{
+  if (prevProps.time !== nextProps.time) {
+    return null;
+  }
+  return false;
+});
+
+function Memo() {
+  const [time, setTime] = useState(new Date().toString());
+
+  return (
+    <Fieldset title='memo'>
+      memo
+      <input type='button' value='更新时间' onClick={()=>setTime(new Date().toString())} />
+      <MemoComponent time={time} />
+    </Fieldset>
+  );
+};
+```
+
+## React.createRef()
 
 * 创建节点引用
 * 通过ref属性附加到React元素
@@ -724,13 +750,42 @@ class A extends React.Component{
 }
 ```
 
-## React.isValidElement
+## React.isValidElement(object)
 
 * 验证对象是否为React元素。返回true或false。
+* 必须传递一个对象
 
 ```
 let D = React.createElement('div');
 React.isValidElement(D);
+```
+
+```
+function ChildFunction() {
+  return (
+    <div>Child-function</div>
+  );
+};
+
+class ChildComponent extends Component {
+  render() {
+    return (
+      <div>Child-Component</div>
+    );
+  }
+};
+
+function IsValidElementComponent() {
+  const D = React.createElement('div');
+
+  return (
+    <Fieldset title='isValidElement'>
+      <p>createElement: {React.isValidElement(D).toString()}</p>
+      <p>Function Component: {React.isValidElement(ChildFunction()).toString()}</p>
+      <p>class Component: {React.isValidElement(<ChildComponent />).toString()}</p>
+    </Fieldset>
+  );
+};
 ```
 
 ## React.Children
@@ -741,22 +796,157 @@ React.isValidElement(D);
 array React.Children.map(children,function callback) 
 ```
 
+```
+class Map extends Component {
+  render() {
+    const arr = React.Children.map(this.props.children, (v)=> v);
+
+    return (
+      <Fieldset title='map'>
+        {arr}
+      </Fieldset>
+    );
+  }
+};
+Map.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function Index() {
+  return (
+    <Map>
+      <p>A</p>
+      <p>B</p>
+      <p>C</p>
+      <p>D</p>
+      <p>E</p>
+      <p>F</p>
+    </Map>
+  );
+};
+```
+
 * 遍历children，无返回
 
 ```
 void React.Children.forEach(children,function callback) 
 ```
 
+```
+class ForEact extends Component {
+  render() {
+    const arr = [];
+    React.Children.forEach(this.props.children, (v) => arr.push(v));
+    return (
+      <Fieldset title='ForEact'>
+        {arr}
+      </Fieldset>
+    );
+  }
+};
+ForEact.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function Index() {
+  return (
+    <ForEact>
+      <p>A</p>
+      <p>B</p>
+      <p>C</p>
+      <p>D</p>
+      <p>E</p>
+      <p>F</p>
+    </ForEact>
+  );
+};
+```
+
 * 返回children的长度
 
 ```
-number React.Children.count(children,function callback) 
+number React.Children.count(children) 
+```
+
+```
+class Count extends Component {
+  render() {
+    const count = React.Children.count(this.props.children, (v)=> v);
+
+    return (
+      <Fieldset title='count'>
+        {count}
+      </Fieldset>
+    );
+  }
+};
+Count.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function Index() {
+  return (
+    <Count>
+      <p>A</p>
+      <p>B</p>
+      <p>C</p>
+      <p>D</p>
+      <p>E</p>
+      <p>F</p>
+    </Count>
+  );
+};
 ```
 
 * 判断children是否为1，不为1报错
 
 ```
 void React.Children.only(children) 
+```
+
+```
+class Only extends Component {
+  render() {
+    const {title} = this.props;
+
+    let e = null;
+    let o = null;
+
+    try {
+      o = React.Children.only(this.props.children);
+    } catch (error) {
+      e = error;
+    };
+    return (
+      <Fieldset title={title}>
+        {e && Object.keys(e).map((v) => e[v])}
+        {o}
+      </Fieldset>
+    );
+  }
+};
+Only.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+function Index() {
+  return (
+    <React.Fragment>
+      <Only title='not-Only'>
+        <p>A</p>
+        <p>B</p>
+        <p>C</p>
+        <p>D</p>
+        <p>E</p>
+        <p>F</p>
+      </Only>
+      <Only title='Only'>
+        <p>A</p>
+      </Only>
+    </React.Fragment>
+  );
+};
 ```
 
 * 把children，从对象转换为数组
@@ -795,7 +985,7 @@ render(){
 
 ```
 React.createElement(
-    type,
+  type,
   [props],
   [...children]
 );
@@ -819,12 +1009,40 @@ ReactDOM.render(
 * 返回一个React元素的函数。
 
 ```
-React.createFactory(type)
+React.createFactory({
+  type,
+  [props],
+  [...children]
+})
+```
+
+```
+function createFactory() {
+  const li = React.createFactory('li');
+  const Child1 = li(null, 'child-1');
+  const Child2 = li(null, 'child-2');
+
+  const Root = React.createElement('ul', '', Child1, Child2);
+
+  return (
+    <Fieldset title='createFactory'>
+      {Root}
+    </Fieldset>
+  );
+}
 ```
 
 ## React.cloneElement
 
 * 克隆并返回一个新的React元素
+
+```
+React.cloneElement({
+    type,
+    [props],
+    [...children]
+})
+```
 
 ```
 class C extends React.Component {
@@ -865,6 +1083,15 @@ TODO
 TODO
 ```
 
+## ReactDOM.createPortal
+
+```
+ReactDOM.createPortal(
+    React.Component | JSX, // react组件
+    element,// 节点元素
+);
+```
+
 ## defaultProps
 
 * 设置props的默认值
@@ -892,15 +1119,6 @@ A.defaultPorps = {
 
 ```
 TODO
-```
-
-# ReactDOM.createPortal
-
-```
-ReactDOM.createPortal(
-    React.Component | JSX, // react组件
-    element,// 节点元素
-);
 ```
 
 # Render Props
