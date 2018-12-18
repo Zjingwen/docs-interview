@@ -736,17 +736,29 @@ function Memo() {
 * 无法在函数组件上使用，因为没有实例
 
 ```
-class A extends React.Component{
-    constructor(){
-        super();
-        this.aRef = React.createRef();
-    }
-    
-    render(){
-        return(
-            <div ref={this.aRef}>hello react</div>
-        )
-    }
+class CreateRefComponent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      el: null,
+    };
+    this.ref = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({
+      el: this.ref.current.innerHTML,
+    });
+  }
+
+  render() {
+    return (
+      <Fieldset title='createRef'>
+        <div ref={this.ref}>createRef</div>
+        <p>el: {this.state.el}</p>
+      </Fieldset>
+    );
+  }
 }
 ```
 
@@ -955,6 +967,37 @@ function Index() {
 array React.Children.toArray(children,function callback)
 ```
 
+```
+class ToArray extends Component {
+  render() {
+    const arr = React.Children.toArray(this.props.children);
+
+    return (
+      <Fieldset title='toArray'>
+        <p>isArray: {Array.isArray(arr).toString()}</p>
+        {arr}
+      </Fieldset>
+    );
+  }
+};
+ToArray.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function Index() {
+  return (
+    <ToArray>
+      <p>A</p>
+      <p>B</p>
+      <p>C</p>
+      <p>D</p>
+      <p>E</p>
+      <p>F</p>
+    </ToArray>
+  );
+};
+```
+
 ## React.Fragment
 
 * 允许创建一对React.Fragment的元素，这样就不用额外创建用于包裹的元素
@@ -1057,7 +1100,8 @@ class C extends React.Component {
 }
 ```
 
-## React.forwordRef
+## React.forwordRef(props,ref)
+`TODO @jingwen 需要独立文章分析`
 
 * 引用转发ref给组件
 
@@ -1065,10 +1109,153 @@ class C extends React.Component {
 React.forwordRef(props,ref)
 ```
 
-## React.lazy
+```
+// 简单用法
+function Input(props) {
+  const {forwardRef} = props;
+  return (
+    <input type='input' defaultValue='输入框' ref={forwardRef} />
+  );
+};
+Input.propTypes = {
+  forwardRef: propTypes.object,
+};
+Input.defaultProps={
+  forwardRef: {},
+};
+
+class ForwardRefComponent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      refs: React.createRef(),
+    };
+  }
+
+  handleFocus() {
+    const {refs: {current}} = this.state;
+    current.focus();
+  }
+
+  render() {
+    const {refs} = this.state;
+    const FancyInput = React.forwardRef((props, ref)=>{
+      return <Input forwardRef={ref} />;
+    });
+
+    return (
+      <Fieldset title='forwardRef-简单用法'>
+        <FancyInput ref={refs} />
+        <input type='button' value='获取焦点' onClick={()=>this.handleFocus()} />
+      </Fieldset>
+    );
+  }
+}
+```
 
 ```
-TODO
+// 转发ref给后代
+function wrapped(Component) {
+  class Wrapped extends React.Component {
+    render() {
+      const {forwardedRef, ...props} = this.props;
+      return <Component ref={forwardedRef} {...props} />;
+    }
+  }
+  return React.forwardRef((props, ref) => {
+    return <Wrapped {...props} forwardedRef={ref} />;
+  });
+}
+
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  };
+
+  handleFocus() {
+    const {current} = this.ref;
+    current.focus();
+  }
+
+  render() {
+    const props = this.props;
+    return (
+      <input type='input' defaultValue={props.value} ref={this.ref} />
+    );
+  }
+}
+
+class Hoc extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      refs: React.createRef(),
+    };
+  };
+
+  handleFocus() {
+    const {refs: {current}} = this.state;
+    current.handleFocus();
+  }
+
+  render() {
+    const {refs} = this.state;
+    const InputHoc = wrapped(Input);
+
+    return (
+      <Fieldset title='forwardRef-hoc-用法'>
+        <InputHoc value='forwardRef-hoc-用法' ref={refs} />
+        <input type='button' value='获取焦点' onClick={()=>this.handleFocus()} />
+      </Fieldset>
+    );
+  }
+};
+```
+
+## React.lazy or React.Suspense
+
+* React.lazy，动态导入组件
+* React.Suspense，等待导入时的显示
+
+```
+const TimeFun = lazy(()=> import('./TimeFun'));
+const TimeClass = lazy(()=> import('./TimeClass'));
+
+class Index extends Component {
+  render() {
+    const Time = new Date().toString();
+    return (
+      <Fieldset title='lazy'>
+      <Suspense fallback={<div>Loading...</div>}>
+        <p>parent: {Time}</p>
+        <TimeFun />
+        <TimeClass />
+      </Suspense>
+      </Fieldset>
+    );
+  }
+}
+```
+
+```
+class TimeClass extends React.Component {
+  render() {
+    const Time = new Date().toString();
+    return <div>lazy-time-class: {Time}</div>;
+  };
+};
+
+export default TimeClass;
+```
+
+```
+function TimeFun() {
+  const Time = new Date().toString();
+  return (<div>lazy-time-fun: {Time}</div>);
+};
+
+export default TimeFun;
 ```
 
 ## React.StrictMode
