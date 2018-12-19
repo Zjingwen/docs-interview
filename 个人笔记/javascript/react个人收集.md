@@ -1260,11 +1260,68 @@ export default TimeFun;
 
 ## React.StrictMode
 
+* 给组件的任何部分开启严格模式
+* 识别具有不安全生命周期的组件
+* 关于遗留字符串ref API使用的警告
+* 关于已弃用的findDOMNode用法的警告
+* 检测意外的副作用
+* 检测遗留上下文API
+
 ```
-TODO
+class Index extends Component {
+  render() {
+    return (
+      <Fieldset title='StrictMode'>
+        <StrictMode>
+          StrictMode
+        </StrictMode>
+      </Fieldset>
+    );
+  }
+};
 ```
 
-## React.context
+## React.createContext
+
+* 在组件中传递参数
+* createContext，设置context的默认值，当找不到Provider的时候使用
+* Provider，允许组件订阅该context的参数
+* contextType，设置当前组件订阅的context
+
+```
+const ThemeContext = React.createContext('light');
+
+class ThemedButton extends React.Component {
+  static contextType = ThemeContext;
+  render() {
+    return <input defaultValue={this.context} type='input' />;
+  }
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+class Index extends Component {
+  render() {
+    return (
+      <Fieldset title='context'>
+        <Toolbar />
+        <ThemeContext.Provider value="dark">
+          <Toolbar />
+        </ThemeContext.Provider>
+      </Fieldset>
+    );
+  }
+}
+
+```
+
+* Consumer，设置多个上下文
 
 ```
 TODO
