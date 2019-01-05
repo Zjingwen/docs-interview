@@ -1281,14 +1281,36 @@ class Index extends Component {
 };
 ```
 
-## React.createContext
+## Context
 
-* 在组件中传递参数
-* createContext，设置context的默认值，当找不到Provider的时候使用
-* Provider，允许组件订阅该context的参数
-* contextType，设置当前组件订阅的context
+* 组件设置全局参数
+* createContext，设置context的默认值
 
 ```
+const A = React.createContext('aaaa');
+```
+
+* Context.Provider，允许组件订阅该context的参数
+* Class.contextType，设置当前组件订阅的context。当找不到Provider的时候使用。context值可以在componentDidMount、componentUpdate、componentWillUnmount、render中获取
+
+```
+
+// 两种设置形式
+const context = React.createContext('aaa');
+class A extend React.Component{
+    static contextType = context;
+}
+
+class B extend React.Component{
+
+}
+B.contextType = context;
+```
+
+* Context.Consumer，
+
+```
+// 简单例子
 const ThemeContext = React.createContext('light');
 
 class ThemedButton extends React.Component {
@@ -1318,13 +1340,66 @@ class Index extends Component {
     );
   }
 }
-
 ```
 
 * Consumer，设置多个上下文
 
 ```
-TODO
+const themes = {
+  light: {
+    background: '#eeeeee',
+  },
+  dark: {
+    background: '#222222',
+  },
+};
+
+const ThemeContext = createContext(
+  themes.light,
+);
+
+class ThemeButton extends Component {
+  static contextType = ThemeContext;
+  render() {
+    const props = this.props;
+    const theme = this.context;
+    return (
+      <button type='button' {...props} style={{backgroundColor: theme.background}} >
+        Theme
+      </button>
+    );
+  }
+};
+
+class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      theme: themes.light,
+    };
+  }
+
+  handleTheme() {
+    this.setState((state)=>({
+      theme: JSON.stringify(state.theme) === JSON.stringify(themes.dark)
+        ? themes.light
+        : themes.dark,
+    }));
+  };
+
+  render() {
+    return (
+      <Fieldset title='多context'>
+        <ThemeContext.Provider value={this.state.theme}>
+          <ThemeButton onClick={()=>this.handleTheme()}>
+            Change Theme
+          </ThemeButton>
+        </ThemeContext.Provider>
+        <ThemeButton />
+      </Fieldset>
+    );
+  }
+}
 ```
 
 ## ReactDOM.createPortal
@@ -1367,8 +1442,73 @@ TODO
 
 # Render Props
 
+* 解决组件交叉使用问题
+
 ```
-TODO
+function Cat(props) {
+  const STYLE = {
+    width: 20,
+    height: 20,
+    background: '#FF00FF',
+    position: 'absolute',
+    left: props.mouse.x,
+    top: props.mouse.y,
+  };
+
+  return (
+    <div style={STYLE} />
+  );
+}
+Cat.propTypes = {
+  mouse: propTypes.object.isRequired,
+};
+
+class Mouse extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      x: 0,
+      y: 0,
+    };
+  }
+
+  handleMove(event) {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY,
+    });
+  };
+
+  render() {
+    const STYLE = {
+      width: 500,
+      height: 500,
+      background: '#eee',
+      display: 'inline-block',
+    };
+
+    return (
+      <div style={STYLE} onMouseMove={(e)=>this.handleMove(e)}>
+        {this.props.render(this.state)}
+      </div>
+    );
+  }
+}
+Mouse.propTypes = {
+  render: propTypes.func.isRequired,
+};
+
+class Index extends Component {
+  render() {
+    return (
+      <Fieldset title='render props'>
+        <Mouse render={(mouse)=>(
+          <Cat mouse={mouse} />
+        )} />
+      </Fieldset>
+    );
+  }
+};
 ```
 
 # React的事件池
