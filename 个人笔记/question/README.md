@@ -2,13 +2,32 @@
 ## ECMAscript-quertion
 - [简述ES6方法`Object.getOwnPropertyNames/Object.keys`和`for...in`的区别](./ECMAscript-quertion-1.md)
 - [js对象的深层拷贝](./ECMAscript-quertion-2.md)
+- [获取‘?’后的get query，并返回对象](./ECMAscript-quertion-3.md)
+- [编程题](./ECMAscript-quertion-4.md)
+- [编程题](./ECMAscript-quertion-5.md)
+- [编程题](./ECMAscript-quertion-6.md)
+- [号码段为131到139的11位手机号码正则校验](./ECMAscript-quertion-7.md)
+- [编程题](./ECMAscript-quertion-8.md)
+- [‘10’+ 1结果为，‘10’-1结果为](./ECMAscript-quertion-9.md)
+- [用ES6字符串模板的方式输出：1室3厅2卫。`${ting}室${shi}厅${wei}卫` ](./ECMAscript-quertion-10.md)
+- [用ES6解构的方式，将下面代码中的obj.name赋值给n，obj.age赋值给a](./ECMAscript-quertion-11.md)
+- [编程题](./ECMAscript-quertion-12.md)
+- [编程题](./ECMAscript-quertion-13.md)
+- [用js实现一个随机打乱数组顺序的函数，要求可以设定数组种任意1个元素的位置不变，其他位置的元素位置随机变化。](./ECMAscript-quertion-14.md)
+- [用js实现一个比较APP版本号的大小的函数，版本号各市由数字和.组成。例如：1.1.0、1.10、1.2.3等。](./ECMAscript-quertion-15.md)
 
 ## css-quertion
 - [CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）](./css-quertion-1.md)
 - [position所有关键字](./css-quertion-2.md)
 - [CSS 文字溢出1行、2行、3行显示省略号](./css-quertion-3.md)
+- [移动端样式兼容解决方案？](./css-quertion-4.md)
+- [Flex布局实现容器box内部元素item垂直居中对齐。](./css-quertion-5.md)
+- [CSS3的box-sizing的取值及各值的说明。](./css-quertion-6.md)
+- [列举出通过CSS样式隐藏元素的方法，并说明其区别。](./css-quertion-7.md)
+- [列出移动端开发中适配各种屏幕尺寸的解决方案(至少3种)](./css-quertion-8.md)
 
 ## web-api-quertion
+- [移动端，如何在html中通过链接调起拨打电话](./web-api-quertion-1.md)
 
 ## vue-quertion
 - [如何封装一个component，在不使用template的情况下输出一下dom结构](./vue-quertion-1.md)
@@ -27,15 +46,23 @@
 ## http-quertion
 - [`content-type/content-encoding/transfer-encoding`分别是什么含义？分别有哪些常见值](./http-quertion-1.md)
 - [假设有一个关注接口，可以让登陆用户关注某个账号；设想一个场景是该接口有CSRF漏洞可以被黑客利用刷关注数。黑客应该如何判断接口是否存在漏洞？该如何利用该漏洞？](./http-quertion-2.md)
+- [HTTP协议的状态码200、400、500分别代表什么？](./http-quertion-3.md)
+- [HTTP协议默认的端口号、HTTPS协议的端口号。](./http-quertion-4.md)
+- [名词解释：`MVCmodel-view-controller、MVPmodel-view-presenter、MVVMmodel-view-viewmodel`](./http-quertion-5.md)
 
 ## algorithm-quertion
 - [用递归写一个函数，计算n个数字的和，n>=0](./algorithm-quertion-1.md)
 - [使用链表实现一个队列，可以向队尾插入(push)数据，并按照插入顺序获取(shift)数据](./algorithm-quertion-2.md)
+- [回文验证，ABBA、ABCBA，从左或从右开始都为相同的字符串](./algorithm-quertion-3.md)
 
 ## wechat-app-quertion
 
 ## diy-quertion
 - [在单页项目中实现动态模块依赖](./diy-quertion-1.md)
+- [debug生产环境的方法？](./diy-quertion-2.md)
+- [如何对网站的资源和文件进行优化？](./diy-quertion-3.md)
+- [减少页面加载时间的方法？](./diy-quertion-4.md)
+- [你编写过最酷的代码是什么？其中你最自豪的是什么？](./diy-quertion-5.md)
 
 ## link
 
@@ -48,7 +75,9 @@
 
 ## [在线demo]()
 
-...
+html-code
+css-code
+js-code
 
 ## 解答（尽可能简化）
 - xxxxxxx

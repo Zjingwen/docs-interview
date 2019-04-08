@@ -1,0 +1,1 @@
+# 名词解释：`MVCmodel-view-controller、MVPmodel-view-presenter、MVVMmodel-view-viewmodel`
