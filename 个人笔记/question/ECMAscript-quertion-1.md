@@ -5,6 +5,9 @@
 - Object.keys()：获取对象可枚举的属性名
 - for...in：遍历对象可枚举属性
 
+## 扩展问题
+- 什么是可枚举属性，不可枚举属性，如何设置，用途
+
 ## 参考
 - [Object.getOwnPropertyNames()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames)
 - [Object.keys()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)

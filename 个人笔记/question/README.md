@@ -15,6 +15,9 @@
 - [编程题](./ECMAscript-quertion-13.md)
 - [用js实现一个随机打乱数组顺序的函数，要求可以设定数组种任意1个元素的位置不变，其他位置的元素位置随机变化。](./ECMAscript-quertion-14.md)
 - [用js实现一个比较APP版本号的大小的函数，版本号各市由数字和.组成。例如：1.1.0、1.10、1.2.3等。](./ECMAscript-quertion-15.md)
+- [解释ES5 new ，class extend继承](./ECMAscript-quertion-16.md)
+- [Promise的链式调用](./ECMAscript-quertion-17.md)
+- [高阶函数](./ECMAscript-quertion-18.md)
 
 ## css-quertion
 - [CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）](./css-quertion-1.md)
@@ -38,6 +41,7 @@
 
 ## react-quertion
 - [组件中子组件如何更新父组件的state](./react-quertion-1.md)
+- [解释React setState props](./react-quertion-2.md)
 
 ## react-redux-quertion
 
@@ -49,6 +53,11 @@
 - [HTTP协议的状态码200、400、500分别代表什么？](./http-quertion-3.md)
 - [HTTP协议默认的端口号、HTTPS协议的端口号。](./http-quertion-4.md)
 - [名词解释：`MVCmodel-view-controller、MVPmodel-view-presenter、MVVMmodel-view-viewmodel`](./http-quertion-5.md)
+- [DNS解析的流向](./http-quertion-6.md)
+- [反向代理](./http-quertion-7.md)
+- [cookie的携带](./http-quertion-8.md)
+- [不同请求方式的不同](./http-quertion-9.md)
+- [状态码，2xx\3xx\4xx\5xx](./http-quertion-10.md)
 
 ## algorithm-quertion
 - [用递归写一个函数，计算n个数字的和，n>=0](./algorithm-quertion-1.md)
@@ -63,6 +72,8 @@
 - [如何对网站的资源和文件进行优化？](./diy-quertion-3.md)
 - [减少页面加载时间的方法？](./diy-quertion-4.md)
 - [你编写过最酷的代码是什么？其中你最自豪的是什么？](./diy-quertion-5.md)
+- [MVVM和MVC的区别](./diy-quertion-6.md)
+- [函数式、面向对象、面向过程](./diy-quertion-7.md)
 
 ## link
 
@@ -74,7 +85,6 @@
 - xxxxxxxxxx
 
 ## [在线demo]()
-
 html-code
 css-code
 js-code
@@ -82,7 +92,9 @@ js-code
 ## 解答（尽可能简化）
 - xxxxxxx
 - xxxxxxx
-...
+
+## 扩展问题
+- xxxx
 
 ## 参考
 - []()
