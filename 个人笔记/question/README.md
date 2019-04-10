@@ -29,6 +29,8 @@
 - [编程题](./ECMAscript-quertion-27.md)
 - [编程题](./ECMAscript-quertion-28.md)
 - [编程题](./ECMAscript-quertion-29.md)
+- [介绍一下js原型链的理解？](./ECMAscript-quertion-30.md)
+- [介绍一下ES6和ES5的语法区别？](./ECMAscript-quertion-31.md)
 
 ## css-quertion
 - [CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）](./css-quertion-1.md)
@@ -65,6 +67,13 @@
 - [解释React setState props](./react-quertion-2.md)
 - [对组件的理解](./react-quertion-3.md)
 - [组件的html怎么进行管理](./react-quertion-4.md)
+- [当你调用setState的时候，发生了什么事情？](./react-quertion-5.md)
+- [React中的key是什么？为什么它们很重要？](./react-quertion-6.md)
+- [shouldComponentUpdate应该做什么，为什么它很重要？](./react-quertion-7.md)
+- [可选择性地传递给setState的第二个参数是什么？它的目的是什么？](./react-quertion-8.md)
+- [写下对redux的工作原理的理解，以及redux的中间件的工作原理？](./react-quertion-9.md)
+- [介绍一下jsx的理解，以及从jsx代码到显示内容的转换过程？](./react-quertion-10.md)
+- [介绍一下React组件的生命周期？](./react-quertion-11.md)
 
 ## react-redux-quertion
 
@@ -93,6 +102,8 @@
 - [用递归写一个函数，计算n个数字的和，n>=0](./algorithm-quertion-1.md)
 - [使用链表实现一个队列，可以向队尾插入(push)数据，并按照插入顺序获取(shift)数据](./algorithm-quertion-2.md)
 - [回文验证，ABBA、ABCBA，从左或从右开始都为相同的字符串](./algorithm-quertion-3.md)
+- [实现一个函数，输入一个字符串，把该字符串转换成整数并输出，例如输入字符串“345”，则输出整数345。（禁止使用语言自带的转换函数）](./algorithm-quertion-4.md)
+- [实现一个函数，在给定的n个数字中，找出第m小的数（m<n）](./algorithm-quertion-5.md)
 
 ## wechat-app-quertion
 
@@ -113,6 +124,7 @@
 - [Vue 和 React 的实现方式和模式](./diy-quertion-14.md)
 - [用node stream构建过哪些工具？bigpipe？](./diy-quertion-15.md)
 - [Shadom Dom与Virtual Dom](./diy-quertion-16.md)
+- [猫大叫一声，主人被惊醒，老鼠被吓跑。用代码实现整个过程。](./diy-quertion-17.md)
 
 ## link
 
