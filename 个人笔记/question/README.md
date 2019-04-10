@@ -23,6 +23,12 @@
 - [promise的三种状态](./ECMAscript-quertion-21.md)
 - [getBounding](./ECMAscript-quertion-22.md)
 - [computeStyle](./ECMAscript-quertion-23.md)
+- [编程题](./ECMAscript-quertion-24.md)
+- [编程题](./ECMAscript-quertion-25.md)
+- [编程题](./ECMAscript-quertion-26.md)
+- [编程题](./ECMAscript-quertion-27.md)
+- [编程题](./ECMAscript-quertion-28.md)
+- [编程题](./ECMAscript-quertion-29.md)
 
 ## css-quertion
 - [CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）](./css-quertion-1.md)
