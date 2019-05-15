@@ -1,6 +1,6 @@
-# 面试题
+# 编程题
 
-假设有个 ❌
+假设有个
 
 ```
 animalFetcher('g',function(result){

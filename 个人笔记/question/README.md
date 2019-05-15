@@ -31,6 +31,13 @@
 - [编程题](./ECMAscript-quertion-29.md)
 - [介绍一下js原型链的理解？](./ECMAscript-quertion-30.md)
 - [介绍一下ES6和ES5的语法区别？](./ECMAscript-quertion-31.md)
+- [ES5和ES6的继承有什么区别？](./ECMAscript-quertion-32.md)
+- [实现一个函数sum，运算结果可以满足如下预期结果](./ECMAscript-quertion-33.md)
+- [实现一个优先队列，使得可以这样使用](./ECMAscript-quertion-34.md)
+- [硬币找零问题](./ECMAscript-quertion-35.md)
+- [写出下面2段代码的执行结果](./ECMAscript-quertion-36.md)
+- [现在有一个接口api，请设计一种方案，连续请求接口10次，每次请求必须在上一次请求成功后发起，如果有一个接口请求失败，整个请求结束](./ECMAscript-quertion-37.md)
+- [编程题](./ECMAscript-quertion-38.md)
 
 ## css-quertion
 - [CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）](./css-quertion-1.md)
@@ -44,11 +51,13 @@
 - [viewport](./css-quertion-9.md)
 - [清除浮动，overflow:hidden和clean:none的区别](./css-quertion-10.md)
 - [Flex和float的使用场景](./css-quertion-11.md)
+- [Web动画的几种常见方式？](./css-quertion-12.md)
 
 ## web-api-quertion
 - [移动端，如何在html中通过链接调起拨打电话](./web-api-quertion-1.md)
 - [如何阻止元素自带事件](./web-api-quertion-2.md)
 - [事件冒泡，捕获的顺序](./web-api-quertion-3.md)
+- [如何定义一个方法，通过调用把视频的一帧生成预览图](./web-api-quertion-4.md)
 
 ## vue-quertion
 - [如何封装一个component，在不使用template的情况下输出一下dom结构](./vue-quertion-1.md)
@@ -56,11 +65,15 @@
 - [组件的html怎么进行管理](./vue-quertion-3.md)
 - [vue的双向绑定原理](./vue-quertion-4.md)
 - [vue的生命周期](./vue-quertion-5.md)
+- [vue中父子组件如何通信](./vue-quertion-6.md)
+- [vue-router的导航守卫（或者函数钩子）有哪些？这些函数中有哪些参数](./vue-quertion-7.md)
 
 ## vue-router-quertion
 
 ## vue-vuex-quertion
 - [vuex原理](./vue-vuex-quertion-1.md)
+- [在vuex中，要想state中存入数据的步骤是什么](./vue-vuex-quertion-2.md)
+- [在state对象中，有一个user_id属性，在getters中有一个city_id(){}方法，如何将这两个属性绑定至组件中](./vue-vuex-quertion-3.md)
 
 ## react-quertion
 - [组件中子组件如何更新父组件的state](./react-quertion-1.md)
@@ -97,6 +110,8 @@
 - [OSI 七层和 TCP/IP 五层](./http-quertion-15.md)
 - [Get和Post的区别，什么是非幂性相关？](./http-quertion-16.md)
 - [http1.0和http1.1的差异](./http-quertion-17.md)
+- [POST提交数据的几种常见Content-Type](./http-quertion-18.md)
+- [什么是重放攻击，列举几种常见防御手段](./http-quertion-19.md)
 
 ## algorithm-quertion
 - [用递归写一个函数，计算n个数字的和，n>=0](./algorithm-quertion-1.md)
@@ -104,6 +119,8 @@
 - [回文验证，ABBA、ABCBA，从左或从右开始都为相同的字符串](./algorithm-quertion-3.md)
 - [实现一个函数，输入一个字符串，把该字符串转换成整数并输出，例如输入字符串“345”，则输出整数345。（禁止使用语言自带的转换函数）](./algorithm-quertion-4.md)
 - [实现一个函数，在给定的n个数字中，找出第m小的数（m<n）](./algorithm-quertion-5.md)
+- [写一个数组展开函数，如输入：[1,[2,[3,4,2],2],5,[6]]，输出数组[1,2,3,4,2,2,5,6]](./algorithm-quertion-6.md)
+- [请实现一个queryString的序列化函数，stringify()](./algorithm-quertion-7.md)
 
 ## wechat-app-quertion
 
