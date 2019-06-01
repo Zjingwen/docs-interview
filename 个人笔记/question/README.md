@@ -1,5 +1,7 @@
 # FE-Quertion-List
+
 ## ECMAscript-quertion
+
 - [简述ES6方法`Object.getOwnPropertyNames/Object.keys`和`for...in`的区别](./ECMAscript-quertion-1.md)
 - [js对象的深层拷贝](./ECMAscript-quertion-2.md)
 - [获取‘?’后的get query，并返回对象](./ECMAscript-quertion-3.md)
@@ -9,7 +11,7 @@
 - [号码段为131到139的11位手机号码正则校验](./ECMAscript-quertion-7.md)
 - [编程题](./ECMAscript-quertion-8.md)
 - [‘10’+ 1结果为，‘10’-1结果为](./ECMAscript-quertion-9.md)
-- [用ES6字符串模板的方式输出：1室3厅2卫。`${ting}室${shi}厅${wei}卫` ](./ECMAscript-quertion-10.md)
+- [用ES6字符串模板的方式输出：1室3厅2卫。`${ting}室${shi}厅${wei}卫`](./ECMAscript-quertion-10.md)
 - [用ES6解构的方式，将下面代码中的obj.name赋值给n，obj.age赋值给a](./ECMAscript-quertion-11.md)
 - [编程题](./ECMAscript-quertion-12.md)
 - [编程题](./ECMAscript-quertion-13.md)
@@ -40,6 +42,7 @@
 - [编程题](./ECMAscript-quertion-38.md)
 
 ## css-quertion
+
 - [CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）](./css-quertion-1.md)
 - [position所有关键字](./css-quertion-2.md)
 - [CSS 文字溢出1行、2行、3行显示省略号](./css-quertion-3.md)
@@ -54,12 +57,14 @@
 - [Web动画的几种常见方式？](./css-quertion-12.md)
 
 ## web-api-quertion
+
 - [移动端，如何在html中通过链接调起拨打电话](./web-api-quertion-1.md)
 - [如何阻止元素自带事件](./web-api-quertion-2.md)
 - [事件冒泡，捕获的顺序](./web-api-quertion-3.md)
 - [如何定义一个方法，通过调用把视频的一帧生成预览图](./web-api-quertion-4.md)
 
 ## vue-quertion
+
 - [如何封装一个component，在不使用template的情况下输出一下dom结构](./vue-quertion-1.md)
 - [对组件的理解](./vue-quertion-2.md)
 - [组件的html怎么进行管理](./vue-quertion-3.md)
@@ -71,11 +76,13 @@
 ## vue-router-quertion
 
 ## vue-vuex-quertion
+
 - [vuex原理](./vue-vuex-quertion-1.md)
 - [在vuex中，要想state中存入数据的步骤是什么](./vue-vuex-quertion-2.md)
 - [在state对象中，有一个user_id属性，在getters中有一个city_id(){}方法，如何将这两个属性绑定至组件中](./vue-vuex-quertion-3.md)
 
 ## react-quertion
+
 - [组件中子组件如何更新父组件的state](./react-quertion-1.md)
 - [解释React setState props](./react-quertion-2.md)
 - [对组件的理解](./react-quertion-3.md)
@@ -93,6 +100,7 @@
 ## node-quertion
 
 ## http-quertion
+
 - [`content-type/content-encoding/transfer-encoding`分别是什么含义？分别有哪些常见值](./http-quertion-1.md)
 - [假设有一个关注接口，可以让登陆用户关注某个账号；设想一个场景是该接口有CSRF漏洞可以被黑客利用刷关注数。黑客应该如何判断接口是否存在漏洞？该如何利用该漏洞？](./http-quertion-2.md)
 - [HTTP协议的状态码200、400、500分别代表什么？](./http-quertion-3.md)
@@ -114,6 +122,7 @@
 - [什么是重放攻击，列举几种常见防御手段](./http-quertion-19.md)
 
 ## algorithm-quertion
+
 - [用递归写一个函数，计算n个数字的和，n>=0](./algorithm-quertion-1.md)
 - [使用链表实现一个队列，可以向队尾插入(push)数据，并按照插入顺序获取(shift)数据](./algorithm-quertion-2.md)
 - [回文验证，ABBA、ABCBA，从左或从右开始都为相同的字符串](./algorithm-quertion-3.md)
@@ -125,6 +134,7 @@
 ## wechat-app-quertion
 
 ## diy-quertion
+
 - [在单页项目中实现动态模块依赖](./diy-quertion-1.md)
 - [debug生产环境的方法？](./diy-quertion-2.md)
 - [如何对网站的资源和文件进行优化？](./diy-quertion-3.md)
@@ -146,7 +156,8 @@
 ## link
 
 ## 解答格式
-```
+
+```txt
 # 标题
 
 ## 要求
@@ -168,5 +179,3 @@ js-code
 - []()
 
 ```
-
-
