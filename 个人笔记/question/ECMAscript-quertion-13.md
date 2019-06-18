@@ -1,6 +1,6 @@
 # 编程题
 
-```
+```javascript
 var s = {
   s: ‘student’,
   getS: function(){
@@ -20,3 +20,4 @@ s.getS.apply(t);
 getS();
 getS1.call(t);
 ```
+
