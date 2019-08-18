@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/doc/',
+  base: '/docs-interview/',
   locales: {
     '/': {
       lang: 'zh-CN',
