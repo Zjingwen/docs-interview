@@ -1,0 +1,26 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "文档",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zjingwen/docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zjingwen/docs/issues"
+  },
+  "homepage": "https://github.com/Zjingwen/docs#readme",
+  "devDependencies": {
+    "vuepress": "1.0.3"
+  }
+}
