@@ -1,4 +1,19 @@
 const path = require('path');
+const glob = require('glob');
+
+const options = {
+  ignore: [
+    '**/.vuepress/**',
+    '/README.md',
+    '**/question/**'
+  ],
+  cwd: 'docs/',
+};
+const files = glob.sync('**/', options);
+let docs = {};
+files.forEach(v=>{
+  docs[v] = glob.sync(`${v}/*`, options).map(v => '/'+v);
+})
 
 module.exports = {
   base: '/docs-interview/',
@@ -6,18 +21,28 @@ module.exports = {
     '/': {
       lang: 'zh-CN',
       title: 'FE-interview',
-      description: '个人收集个人原创',
+      description: '个人收集 and 个人原创',
     },
   },
   themeConfig: {
     sidebar: [
       {
-        title: '面试题',
+        title: '大纲',
         collapsable: false,
-        path: '/question/'
+        path: '/'
       },
       {
-        title: 'ecmascript'
+        title: 'ecmascript',
+        collapsable: true,
+        children: docs['es-question/']
+      },
+      {
+        title: '浏览器'
+      },
+      {
+        title: 'css',
+        collapsable: true,
+        children: docs['css-question/']
       },
       {
         title: 'vue'
@@ -29,12 +54,6 @@ module.exports = {
         title: 'typescript'
       },
       {
-        title: '浏览器'
-      },
-      {
-        title: 'css'
-      },
-      {
         title: 'git'
       },
       {
@@ -44,7 +63,9 @@ module.exports = {
         title: 'webpack'
       },
       {
-        title: 'http'
+        title: 'http',
+        collapsable: true,
+        children: docs['http-question/']
       },
       {
         title: 'node'
@@ -53,7 +74,9 @@ module.exports = {
         title: '微信小程序'
       },
       {
-        title: '算法'
+        title: '算法',
+        collapsable: true,
+        children: docs['algorithm-question/']
       },
       {
         title: '统计'
@@ -72,6 +95,11 @@ module.exports = {
       },
       {
         title: '设计模式'
+      },
+      {
+        title: '未归类问题',
+        collapsable: true,
+        children: docs['diy-question/']
       }
     ]
   }

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Zjingwen/docs#readme",
   "devDependencies": {
+    "glob": "^7.1.4",
     "vuepress": "1.0.3"
   }
 }
