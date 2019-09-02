@@ -25,6 +25,10 @@ module.exports = {
     },
   },
   themeConfig: {
+    lastUpdated: 'Last Updated',
+    nav: [
+      { text: 'Github', link: 'https://github.com/Zjingwen/docs-interview' },
+    ],
     sidebar: [
       {
         title: '大纲',
