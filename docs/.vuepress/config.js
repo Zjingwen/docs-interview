@@ -45,22 +45,34 @@ module.exports = {
         children: docs['css-question/']
       },
       {
-        title: 'vue'
+        title: 'vue',
+        collapsable: true,
+        children: docs['vue-question/']
       },
       {
-        title: 'react'
+        title: 'react',
+        collapsable: true,
+        children: docs['react-question/']
       },
       {
-        title: 'typescript'
+        title: 'typescript',
+        collapsable: true,
+        children: docs['typescript-question/']
       },
       {
-        title: 'git'
+        title: 'git',
+        collapsable: true,
+        children: docs['git-question/']
       },
       {
-        title: 'rxjs'
+        title: 'rxjs',
+        collapsable: true,
+        children: docs['rxjs-question/']
       },
       {
-        title: 'webpack'
+        title: 'webpack',
+        collapsable: true,
+        children: docs['webpack-question/']
       },
       {
         title: 'http',
@@ -68,10 +80,14 @@ module.exports = {
         children: docs['http-question/']
       },
       {
-        title: 'node'
+        title: 'node',
+        collapsable: true,
+        children: docs['node-question/']
       },
       {
-        title: '微信小程序'
+        title: '微信小程序',
+        collapsable: true,
+        children: docs['weChat-app-question/']
       },
       {
         title: '算法',
@@ -79,22 +95,34 @@ module.exports = {
         children: docs['algorithm-question/']
       },
       {
-        title: '统计'
+        title: '统计',
+        collapsable: true,
+        children: docs['statistics-question/']
       },
       {
-        title: '测试'
+        title: '测试',
+        collapsable: true,
+        children: docs['test-question/']
       },
       {
-        title: '发布/部署'
+        title: '发布/部署',
+        collapsable: true,
+        children: docs['ci-question/']
       },
       {
-        title: '前端优化'
+        title: '前端优化',
+        collapsable: true,
+        children: docs['optimization-question/']
       },
       {
-        title: '团队管理'
+        title: '团队管理',
+        collapsable: true,
+        children: docs['manage-question/']
       },
       {
-        title: '设计模式'
+        title: '设计模式',
+        collapsable: true,
+        children: docs['design-pattern-question/']
       },
       {
         title: '未归类问题',
