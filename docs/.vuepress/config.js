@@ -17,6 +17,9 @@ files.forEach(v=>{
 
 module.exports = {
   base: '/docs-interview/',
+  markdown: {
+    lineNumbers: true
+  },
   locales: {
     '/': {
       lang: 'zh-CN',
