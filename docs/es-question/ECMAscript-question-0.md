@@ -1,4 +1,4 @@
-# 数据类型问题 test cl
+# 数据类型问题
 
 javascript基本数据类型
 
