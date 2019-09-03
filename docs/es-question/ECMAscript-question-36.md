@@ -1,4 +1,4 @@
-## Q：写出下面2段代码的执行结果 ❌
+# 写出下面2段代码的执行结果
 
 ```javascript
 console.log('A');
@@ -30,3 +30,4 @@ promise.then((res)=>{
 })
 
 console.log('B');
+```

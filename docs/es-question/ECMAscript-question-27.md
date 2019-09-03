@@ -1,7 +1,6 @@
-## 编程题 
-- 说明以下代码输出情况
+# 说明以下代码输出情况
 
-```javascript
+```js
 function a(fun){
     console.log('a');
     fun(function(){

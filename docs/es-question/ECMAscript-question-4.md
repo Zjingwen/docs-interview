@@ -1,5 +1,7 @@
-# 编程题
-```javascript
+# 判断输出以及log
+
+:::tip
+```js
 functino A(){
     const b ={};
     return ()=>{
@@ -7,6 +9,7 @@ functino A(){
     }
 }
 ```
-- `A()()`会得到什么？
-- `A()().b = 1; A()().c = 2; console.log(A()());`会得到什么结果？
-- `const a = A(); a().b = 1; a().c = 2;console.log(a());`会得到什么结果？
+* `A()()`会得到什么？
+* `A()().b = 1; A()().c = 2; console.log(A()());`会得到什么结果？
+* `const a = A(); a().b = 1; a().c = 2;console.log(a());`会得到什么结果？
+:::

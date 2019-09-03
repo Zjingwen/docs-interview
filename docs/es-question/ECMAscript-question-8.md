@@ -1,5 +1,6 @@
-# 编程题
-```
+# 判断输出
+:::tip
+```js
 function teacher { 
   var t='teacher';
   let s='student';
@@ -7,4 +8,5 @@ function teacher {
 console.log(t);
 console.log(s);
 ```
-- 说出输出结果
+* 说出输出结果
+:::

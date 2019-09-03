@@ -1,4 +1,5 @@
-# 编程题
+# setTimeout/setInterval执行时间
+:::tip
 ```javascript
 function a(){
     const startTime = Date.now();
@@ -11,5 +12,6 @@ function a(){
     }
 }
 ```
-- setTimeout(a,10);的结果是？会每隔10ms后执行吗？总运行时间是多少？
-- setInterval(a,10);的结果是？会每隔10ms后执行吗？1000ms后会怎么样？
+* setTimeout(a,10);的结果是？会每隔10ms后执行吗？总运行时间是多少？
+* setInterval(a,10);的结果是？会每隔10ms后执行吗？1000ms后会怎么样？
+:::

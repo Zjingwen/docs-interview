@@ -1,6 +1,6 @@
-# 编程题
+# 写出以下输出结果
 
-```javascript
+```js
 var s = {
   s: ‘student’,
   getS: function(){

@@ -1,5 +1,6 @@
-# 编程题
-```
+# 请写出下列代码的执行结果
+
+```js
 function switchCase(value){
   switch(value){
     case ‘0’:console.log(‘case 0’);
@@ -9,5 +10,3 @@ function switchCase(value){
   }
 }
 ```
-
-- 请写出下列代码的执行结果

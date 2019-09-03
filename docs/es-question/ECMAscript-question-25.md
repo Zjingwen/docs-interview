@@ -1,7 +1,6 @@
-##编程题 
-- 请说明以下代码的输出情况
+# 请说明以下代码的输出情况
 
-```javascript
+```js
 var aa = function(item){
   console.log(item.a);
 }
