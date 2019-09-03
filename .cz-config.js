@@ -40,6 +40,4 @@ module.exports = {
     }
   ],
   skipQuestions: ['scope', 'body', 'footer'],
-  allowCustomScopes: false,
-  allowBreakingChanges: ['feat ', 'fix']
 };

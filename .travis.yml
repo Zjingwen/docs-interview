@@ -3,7 +3,7 @@ node_js:
   - 8.9.1
 
 install:
-  - npm i
+  - npm i --production
 
 script:
   - npm run build
