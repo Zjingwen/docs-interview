@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "sh deploy.sh",
-    "build:docs": "vuepress build docs"
+    "build:docs": "vuepress build docs",
+    "commit": "git-cz"
   },
   "resolutions": {
     "terser": "3.14.1"
@@ -21,8 +22,17 @@
     "url": "https://github.com/Zjingwen/docs/issues"
   },
   "homepage": "https://github.com/Zjingwen/docs#readme",
-  "devDependencies": {
+  "dependencies": {
     "glob": "^7.1.4",
     "vuepress": "1.0.3"
+  },
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "cz-customizable": "^6.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    }
   }
 }
