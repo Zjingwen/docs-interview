@@ -2,5 +2,5 @@
 
 :::tip
 题目：
-* 根据promise A+ 规范，编
+* 根据promise A+ 规范，编写一个promise函数
 :::
