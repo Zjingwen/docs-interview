@@ -1,14 +1,15 @@
-# CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）
+# CSS background 属性
 
-[demo](https://jsbin.com/pamuneteba/1/edit?css,output)
+:::tip
+题目：
+* CSS background 属性中，如何同时定义多个背景图以及颜色（HTML+CSS）
 
-```
-width: 300px;
-height: 200px;
+:::
 
+```css
 background: 
-    url(https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png),
-    url(http://img2.imgtn.bdimg.com/it/u=2291655243,3954230733&fm=26&gp=0.jpg);
+    url(imgUrl),
+    url(imgUrl);
 background-size: 100%,100%;
 background-repeat: no-repeat,no-repeat;
 ```

@@ -1,8 +1,12 @@
-# CSS 文字溢出1行、2行、3行显示省略号
+# CSS 文字溢出
 
-[demo](http://jsbin.com/xujohitihi/edit?html,css,output)
+:::tip
+题目：
+* 1行、2行、3行显示省略号
+:::
 
-```
+解答
+```css
 // 溢出一行省略号
 .text_overflow1{
   width: 100px;
@@ -23,9 +27,6 @@
   -webkit-box-orient: vertical;
 }
 ```
-
-解答
-
 
 参考
 
